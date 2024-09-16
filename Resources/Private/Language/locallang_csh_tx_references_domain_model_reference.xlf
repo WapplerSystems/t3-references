@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:references/Resources/Private/Language/locallang_csh_tx_references_domain_model_reference.xlf" date="2024-09-16T16:03:02Z" product-name="references">
+		<header/>
+		<body>
+			<trans-unit id="name.description" resname="name.description">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="slug.description" resname="slug.description">
+				<source>slug</source>
+			</trans-unit>
+			<trans-unit id="teaser.description" resname="teaser.description">
+				<source>teaser</source>
+			</trans-unit>
+			<trans-unit id="description.description" resname="description.description">
+				<source>description</source>
+			</trans-unit>
+			<trans-unit id="link.description" resname="link.description">
+				<source>link</source>
+			</trans-unit>
+			<trans-unit id="logo.description" resname="logo.description">
+				<source>logo</source>
+			</trans-unit>
+			<trans-unit id="screenshot_smartphone.description" resname="screenshot_smartphone.description">
+				<source>screenshot_smartphone</source>
+			</trans-unit>
+			<trans-unit id="screenshot_tablet.description" resname="screenshot_tablet.description">
+				<source>screenshot_tablet</source>
+			</trans-unit>
+			<trans-unit id="screenshot_laptop.description" resname="screenshot_laptop.description">
+				<source>screenshot_laptop</source>
+			</trans-unit>
+			<trans-unit id="screenshot_desktop.description" resname="screenshot_desktop.description">
+				<source>screenshot_desktop</source>
+			</trans-unit>
+			<trans-unit id="video.description" resname="video.description">
+				<source>video</source>
+			</trans-unit>
+			<trans-unit id="technology.description" resname="technology.description">
+				<source>technology</source>
+			</trans-unit>
+			<trans-unit id="industry.description" resname="industry.description">
+				<source>industry</source>
+			</trans-unit>
+			<trans-unit id="target_group.description" resname="target_group.description">
+				<source>target_group</source>
+			</trans-unit>
+			<trans-unit id="country.description" resname="country.description">
+				<source>country</source>
+			</trans-unit>
+			<trans-unit id="duration.description" resname="duration.description">
+				<source>duration</source>
+			</trans-unit>
+			<trans-unit id="green_hosting.description" resname="green_hosting.description">
+				<source>green_hosting</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

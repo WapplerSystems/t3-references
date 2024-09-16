@@ -1,0 +1,1723 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    24.15065538979468,
+                    -318.08790767049015
+                ]
+            },
+            "name": "Reference",
+            "value": {
+                "actionGroup": {
+                    "_default0_index": false,
+                    "_default1_list": true,
+                    "_default2_show": true,
+                    "_default3_new_create": false,
+                    "_default4_edit_update": false,
+                    "_default5_delete": false,
+                    "customActions": []
+                },
+                "name": "Reference",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "controllerScope": "Frontend",
+                    "categorizable": true,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "Entity",
+                    "uid": "5ba14914-7d5f-4755-b140-12d4ef487a23"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "name",
+                            "propertyType": "String",
+                            "typeSelect": {
+                                "selectboxValues": "",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "",
+                            "maxItems": "",
+                            "uid": "76f2d6c3-e16d-41a1-8259-de08f6b041eb"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "slug",
+                            "propertyType": "Slug",
+                            "typeSelect": {
+                                "selectboxValues": "",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "",
+                            "maxItems": "",
+                            "uid": "376b133d-335b-4051-bb25-8c51c8d74263"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "teaser",
+                            "propertyType": "Text",
+                            "typeSelect": {
+                                "selectboxValues": "",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "",
+                            "maxItems": "",
+                            "uid": "9b9e17c3-6529-4023-9bfe-45d9a56cae35"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "description",
+                            "propertyType": "Text",
+                            "typeSelect": {
+                                "selectboxValues": "",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": true
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "",
+                            "maxItems": "",
+                            "uid": "a74d38b9-1c57-4b6c-8f64-a3a3d1cfbca0"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "link",
+                            "propertyType": "InputLink",
+                            "typeSelect": {
+                                "selectboxValues": "",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "",
+                            "maxItems": "",
+                            "uid": "832f07b7-6e2f-4f05-8624-56f216a72a07"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "logo",
+                            "propertyType": "File",
+                            "typeSelect": {
+                                "selectboxValues": "",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": "jpg,png,gif,webp,avif"
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "0",
+                            "maxItems": "1",
+                            "uid": "84d995ba-d632-41d0-a95f-aa3df4cb83f3"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "screenshot_smartphone",
+                            "propertyType": "File",
+                            "typeSelect": {
+                                "selectboxValues": "",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "0",
+                            "maxItems": "1",
+                            "uid": "154a8774-7108-4cd4-99f4-260bdcdbba83"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "screenshot_tablet",
+                            "propertyType": "File",
+                            "typeSelect": {
+                                "selectboxValues": "",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "0",
+                            "maxItems": "1",
+                            "uid": "8a9e9c63-3a84-45e0-bb2f-4e1c43bfbb44"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "screenshot_laptop",
+                            "propertyType": "File",
+                            "typeSelect": {
+                                "selectboxValues": "",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "0",
+                            "maxItems": "1",
+                            "uid": "8110f3fb-cf6d-4715-8498-e68e8136a176"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "screenshot_desktop",
+                            "propertyType": "File",
+                            "typeSelect": {
+                                "selectboxValues": "",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "0",
+                            "maxItems": "1",
+                            "uid": "01f071df-ecfe-41d6-adc8-4aa4a6ffe5a3"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "video",
+                            "propertyType": "File",
+                            "typeSelect": {
+                                "selectboxValues": "",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "0",
+                            "maxItems": "1",
+                            "uid": "abe20fc1-d922-4f56-be83-7a79732275b3"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "technology",
+                            "propertyType": "Select",
+                            "typeSelect": {
+                                "selectboxValues": "TYPO3;TYPO3\nWordPress;WordPress\nsymfony;symfony",
+                                "renderType": "selectMultipleSideBySide",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "4",
+                            "rows": "10",
+                            "minItems": "",
+                            "maxItems": "",
+                            "uid": "3f8c8af3-cb98-4f45-a117-e5cc70c00b9a"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "industry",
+                            "propertyType": "Select",
+                            "typeSelect": {
+                                "selectboxValues": "Versicherungen;Versicherungen\nForschung;Forschung\nLogistik;Logistik\nHandel;Handel\nEnergie;Energie",
+                                "renderType": "selectMultipleSideBySide",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "4",
+                            "rows": "10",
+                            "minItems": "",
+                            "maxItems": "",
+                            "uid": "45fd65ad-3b2a-4ffd-95e4-95d1535fa0cb"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "target_group",
+                            "propertyType": "Select",
+                            "typeSelect": {
+                                "selectboxValues": "Zielgruppe1;Zielgruppe1\nZielgruppe2;Zielgruppe2",
+                                "renderType": "selectMultipleSideBySide",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "4",
+                            "rows": "10",
+                            "minItems": "",
+                            "maxItems": "",
+                            "uid": "9700ec5e-7fda-4e06-8e54-edde4ce81c15"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "country",
+                            "propertyType": "Select",
+                            "typeSelect": {
+                                "selectboxValues": "Deutschland;Deutschland",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "",
+                            "maxItems": "",
+                            "uid": "05f5d736-9067-4892-8aa1-42ea7a580592"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "duration",
+                            "propertyType": "String",
+                            "typeSelect": {
+                                "selectboxValues": "",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "",
+                            "maxItems": "",
+                            "uid": "db2231e1-ef38-46a3-9d59-dc603e328f57"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "propertyDescription": "",
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsNullable": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "green_hosting",
+                            "propertyType": "Boolean",
+                            "typeSelect": {
+                                "selectboxValues": "",
+                                "renderType": "selectSingle",
+                                "foreignTable": "",
+                                "whereClause": ""
+                            },
+                            "typeText": {
+                                "enableRichtext": false
+                            },
+                            "typeNumber": {
+                                "enableSlider": false,
+                                "steps": 1,
+                                "setRange": false,
+                                "upperRange": 255,
+                                "lowerRange": 0
+                            },
+                            "typeColor": {
+                                "setValuesColorPicker": false,
+                                "colorPickerValues": ""
+                            },
+                            "typeBoolean": {
+                                "renderType": "default",
+                                "booleanValues": ""
+                            },
+                            "typePassword": {
+                                "renderPasswordGenerator": false
+                            },
+                            "typeDateTime": {
+                                "dbTypeDateTime": "",
+                                "formatDateTime": ""
+                            },
+                            "typeFile": {
+                                "allowedFileTypes": ""
+                            },
+                            "size": "30",
+                            "rows": "10",
+                            "minItems": "",
+                            "maxItems": "",
+                            "uid": "2ee9287a-56c3-480d-9ba0-b56034f43156"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [],
+        "description": "reference extension",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 12.4.0-12.4.99",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "generateDocumentationTemplate": true,
+            "generateEditorConfig": true,
+            "generateEmptyGitRepository": true,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "12.4",
+            "version": "0.0.1"
+        },
+        "extensionKey": "references",
+        "name": "Referenzen",
+        "originalExtensionKey": "",
+        "originalVendorName": "",
+        "persons": [
+            {
+                "company": "",
+                "email": "",
+                "name": "WapplerSystems",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "Reference => list",
+                    "noncacheableActions": ""
+                },
+                "description": "",
+                "key": "List",
+                "name": "List"
+            }
+        ],
+        "vendorName": "wapplersystems"
+    },
+    "wires": [],
+    "nodes": [
+        {
+            "id": "dndnode_0",
+            "type": "customModel",
+            "position": {
+                "x": 24.15065538979468,
+                "y": -318.08790767049015
+            },
+            "data": {
+                "label": "Reference",
+                "objectType": "",
+                "isAggregateRoot": true,
+                "controllerScope": "Frontend",
+                "enableSorting": true,
+                "addDeletedField": true,
+                "addHiddenField": true,
+                "addStarttimeEndtimeFields": true,
+                "enableCategorization": true,
+                "description": "",
+                "mapToExistingTable": "",
+                "extendExistingModelClass": "",
+                "actions": {
+                    "actionIndex": false,
+                    "actionList": true,
+                    "actionShow": true,
+                    "actionNewCreate": false,
+                    "actionEditUpdate": false,
+                    "actionDelete": false
+                },
+                "customActions": [],
+                "properties": [
+                    {
+                        "name": "name",
+                        "type": "String",
+                        "description": "",
+                        "isRequired": true,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "",
+                        "minItems": "",
+                        "maxItems": ""
+                    },
+                    {
+                        "name": "slug",
+                        "type": "Slug",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "",
+                        "minItems": "",
+                        "maxItems": ""
+                    },
+                    {
+                        "name": "teaser",
+                        "type": "Text",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "",
+                        "minItems": "",
+                        "maxItems": ""
+                    },
+                    {
+                        "name": "description",
+                        "type": "Text",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": true
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "",
+                        "minItems": "",
+                        "maxItems": ""
+                    },
+                    {
+                        "name": "link",
+                        "type": "InputLink",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "",
+                        "minItems": "",
+                        "maxItems": ""
+                    },
+                    {
+                        "name": "logo",
+                        "type": "File",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": "jpg,png,gif,webp,avif"
+                        },
+                        "size": "",
+                        "minItems": "0",
+                        "maxItems": "1"
+                    },
+                    {
+                        "name": "screenshot_smartphone",
+                        "type": "File",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "",
+                        "minItems": "0",
+                        "maxItems": "1"
+                    },
+                    {
+                        "name": "screenshot_tablet",
+                        "type": "File",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "",
+                        "minItems": "0",
+                        "maxItems": "1"
+                    },
+                    {
+                        "name": "screenshot_laptop",
+                        "type": "File",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "",
+                        "minItems": "0",
+                        "maxItems": "1"
+                    },
+                    {
+                        "name": "screenshot_desktop",
+                        "type": "File",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "",
+                        "minItems": "0",
+                        "maxItems": "1"
+                    },
+                    {
+                        "name": "video",
+                        "type": "File",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "",
+                        "minItems": "0",
+                        "maxItems": "1"
+                    },
+                    {
+                        "name": "technology",
+                        "type": "Select",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "TYPO3;TYPO3\nWordPress;WordPress\nsymfony;symfony",
+                            "renderType": "selectMultipleSideBySide",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "4",
+                        "minItems": "",
+                        "maxItems": ""
+                    },
+                    {
+                        "name": "industry",
+                        "type": "Select",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "Versicherungen;Versicherungen\nForschung;Forschung\nLogistik;Logistik\nHandel;Handel\nEnergie;Energie",
+                            "renderType": "selectMultipleSideBySide",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "4",
+                        "minItems": "",
+                        "maxItems": ""
+                    },
+                    {
+                        "name": "target_group",
+                        "type": "Select",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "Zielgruppe1;Zielgruppe1\nZielgruppe2;Zielgruppe2",
+                            "renderType": "selectMultipleSideBySide",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "4",
+                        "minItems": "",
+                        "maxItems": ""
+                    },
+                    {
+                        "name": "country",
+                        "type": "Select",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "Deutschland;Deutschland",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "",
+                        "minItems": "",
+                        "maxItems": ""
+                    },
+                    {
+                        "name": "duration",
+                        "type": "String",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "",
+                        "minItems": "",
+                        "maxItems": ""
+                    },
+                    {
+                        "name": "green_hosting",
+                        "type": "Boolean",
+                        "description": "",
+                        "isRequired": false,
+                        "isNullable": false,
+                        "isExcludeField": false,
+                        "isl10nModeExlude": false,
+                        "typeSelect": {
+                            "selectboxValues": "",
+                            "renderType": "selectSingle",
+                            "foreignTable": ""
+                        },
+                        "typeText": {
+                            "enableRichtext": false
+                        },
+                        "typeNumber": {
+                            "enableSlider": false,
+                            "steps": 1,
+                            "setRange": false,
+                            "upperRange": 255,
+                            "lowerRange": 0
+                        },
+                        "typeColor": {
+                            "setValuesColorPicker": false,
+                            "colorPickerValues": ""
+                        },
+                        "typeBoolean": {
+                            "renderType": "default",
+                            "booleanValues": ""
+                        },
+                        "typePassword": {
+                            "renderPasswordGenerator": false
+                        },
+                        "typeDateTime": {
+                            "dbTypeDateTime": "",
+                            "formatDateTime": ""
+                        },
+                        "typeFile": {
+                            "allowedFileTypes": ""
+                        },
+                        "size": "",
+                        "minItems": "",
+                        "maxItems": ""
+                    }
+                ],
+                "relations": []
+            },
+            "dragHandle": ".drag-handle",
+            "draggable": true,
+            "width": 323,
+            "height": 1059,
+            "selected": false,
+            "positionAbsolute": {
+                "x": 24.15065538979468,
+                "y": -318.08790767049015
+            },
+            "dragging": false
+        }
+    ],
+    "edges": [],
+    "storagePath": "\/var\/www\/html\/packages\/",
+    "log": {
+        "last_modified": "2024-09-16 04:03",
+        "extension_builder_version": "v12.0.0-beta.2",
+        "be_user": "Sven Wappler (6)"
+    }
+}
