@@ -123,7 +123,7 @@ return [
                 'type' => 'slug',
                 'size' => 50,
                 'generatorOptions' => [
-                    'fields' => ['title'], // TODO: adjust this field to the one you want to use
+                    'fields' => ['name'],
                     'fieldSeparator' => '-',
                     'replacements' => [
                         '/' => '',
@@ -132,7 +132,7 @@ return [
                 'fallbackCharacter' => '-',
                 'eval' => 'uniqueInPid',
             ],
-            
+
         ],
         'teaser' => [
             'exclude' => false,
@@ -265,14 +265,7 @@ return [
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.target_group',
             'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.target_group.description',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'items' => [
-                    ['Default', 0],
-                    ['Zielgruppe1', 'Zielgruppe1'],
-                    ['Zielgruppe2', 'Zielgruppe2'],
-                ],
-                'size' => 4,
+                'type' => 'tag',
                 'minitems' => 0,
             ],
         ],
@@ -313,6 +306,6 @@ return [
                 'default' => 0,
             ]
         ],
-    
+
     ],
 ];
