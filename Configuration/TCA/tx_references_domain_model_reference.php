@@ -230,15 +230,17 @@ return [
             'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.technology.description',
             'config' => [
                 'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'items' => [
-                    ['Default', 0],
-                    ['TYPO3', 'TYPO3'],
-                    ['WordPress', 'WordPress'],
-                    ['symfony', 'symfony'],
+                'renderType' => 'selectSingleBox',
+                'foreign_table' => 'sys_tag',
+                'foreign_table_where' => 'AND sys_tag.pid = ###PAGE_TSCONFIG_ID###',
+                'MM' => 'sys_tag_record_mm',
+                'MM_opposite_field' => 'items',
+                'MM_match_fields' => [
+                    'tablenames' => 'tx_references_domain_model_reference',
+                    'fieldname' => 'technology',
                 ],
-                'size' => 4,
                 'minitems' => 0,
+                'multiple' => 1,
             ],
         ],
         'industry' => [
@@ -247,17 +249,17 @@ return [
             'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.industry.description',
             'config' => [
                 'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'items' => [
-                    ['Default', 0],
-                    ['Versicherungen', 'Versicherungen'],
-                    ['Forschung', 'Forschung'],
-                    ['Logistik', 'Logistik'],
-                    ['Handel', 'Handel'],
-                    ['Energie', 'Energie'],
+                'renderType' => 'selectSingleBox',
+                'foreign_table' => 'sys_tag',
+                'foreign_table_where' => 'AND sys_tag.pid = ###PAGE_TSCONFIG_ID###',
+                'MM' => 'sys_tag_record_mm',
+                'MM_opposite_field' => 'items',
+                'MM_match_fields' => [
+                    'tablenames' => 'tx_references_domain_model_reference',
+                    'fieldname' => 'industry',
                 ],
-                'size' => 4,
                 'minitems' => 0,
+                'multiple' => 1,
             ],
         ],
         'target_group' => [
@@ -265,8 +267,18 @@ return [
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.target_group',
             'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.target_group.description',
             'config' => [
-                'type' => 'tag',
+                'type' => 'select',
+                'renderType' => 'selectSingleBox',
+                'foreign_table' => 'sys_tag',
+                'foreign_table_where' => 'AND sys_tag.pid = ###PAGE_TSCONFIG_ID###',
+                'MM' => 'sys_tag_record_mm',
+                'MM_opposite_field' => 'items',
+                'MM_match_fields' => [
+                    'tablenames' => 'tx_references_domain_model_reference',
+                    'fieldname' => 'target_group',
+                ],
                 'minitems' => 0,
+                'multiple' => 1,
             ],
         ],
         'country' => [
@@ -278,7 +290,6 @@ return [
                 'renderType' => 'selectSingle',
                 'items' => [
                     ['Default', 0],
-                    ['Deutschland', 'Deutschland'],
                 ],
                 'size' => 30,
             ],
