@@ -90,6 +90,12 @@
 			<trans-unit id="tx_references_domain_model_reference.target_group.description" resname="tx_references_domain_model_reference.target_group.description">
 				<source>Target Group</source>
 			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.task" resname="tx_references_domain_model_reference.task">
+				<source>Task</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.task.description" resname="tx_references_domain_model_reference.task.description">
+				<source>Task</source>
+			</trans-unit>
 			<trans-unit id="tx_references_domain_model_reference.country" resname="tx_references_domain_model_reference.country">
 				<source>Country</source>
 			</trans-unit>
@@ -113,6 +119,9 @@
 			</trans-unit>
 			<trans-unit id="tx_references_list.description" resname="tx_references_list.description">
 				<source></source>
+			</trans-unit>
+			<trans-unit id="tab.media">
+				<source>Media</source>
 			</trans-unit>
 		</body>
 	</file>

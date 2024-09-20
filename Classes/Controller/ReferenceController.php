@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace wapplersystems\References\Controller;
 
 
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use wapplersystems\References\Domain\Repository\ReferenceRepository;
+
 /**
  * This file is part of the "Referenzen" Extension for TYPO3 CMS.
  *
@@ -17,26 +20,13 @@ namespace wapplersystems\References\Controller;
 /**
  * ReferenceController
  */
-class ReferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class ReferenceController extends ActionController
 {
 
-    /**
-     * referenceRepository
-     *
-     * @var \wapplersystems\References\Domain\Repository\ReferenceRepository
-     */
-    protected $referenceRepository;
-    public function __construct()
+    public function __construct(readonly ReferenceRepository $referenceRepository)
     {
     }
 
-    /**
-     * @param \wapplersystems\References\Domain\Repository\ReferenceRepository $referenceRepository
-     */
-    public function injectReferenceRepository(\wapplersystems\References\Domain\Repository\ReferenceRepository $referenceRepository)
-    {
-        $this->referenceRepository = $referenceRepository;
-    }
 
     /**
      * action list

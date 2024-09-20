@@ -24,7 +24,7 @@ return [
         ],
     ],
     'types' => [
-        '1' => ['showitem' => 'name, slug, teaser, description, link, logo, screenshot_smartphone, screenshot_tablet, screenshot_laptop, screenshot_desktop, video, technology, industry, target_group, country, duration, green_hosting, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'name, slug, teaser, description, link, technology, industry, target_group, task, country, duration, green_hosting, --div--;LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tab.media, logo, screenshot_smartphone, screenshot_tablet, screenshot_laptop, screenshot_desktop, video, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -106,7 +106,7 @@ return [
         'name' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.name',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.name.description',
+            //'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.name.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -118,7 +118,6 @@ return [
         'slug' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.slug',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.slug.description',
             'config' => [
                 'type' => 'slug',
                 'size' => 50,
@@ -137,7 +136,6 @@ return [
         'teaser' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.teaser',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.teaser.description',
             'config' => [
                 'type' => 'text',
                 'rows' => 10,
@@ -148,7 +146,6 @@ return [
         'description' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.description',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.description.description',
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => 'true',
@@ -159,7 +156,6 @@ return [
         'link' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.link',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.link.description',
             'config' => [
                 'type' => 'link',
             ]
@@ -167,7 +163,6 @@ return [
         'logo' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.logo',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.logo.description',
             'config' => [
                 'type' => 'file',
                 'allowed' => 'common-image-types',
@@ -177,7 +172,6 @@ return [
         'screenshot_smartphone' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.screenshot_smartphone',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.screenshot_smartphone.description',
             'config' => [
                 'type' => 'file',
                 'allowed' => 'common-image-types',
@@ -187,7 +181,6 @@ return [
         'screenshot_tablet' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.screenshot_tablet',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.screenshot_tablet.description',
             'config' => [
                 'type' => 'file',
                 'allowed' => 'common-image-types',
@@ -197,7 +190,6 @@ return [
         'screenshot_laptop' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.screenshot_laptop',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.screenshot_laptop.description',
             'config' => [
                 'type' => 'file',
                 'allowed' => 'common-image-types',
@@ -207,7 +199,6 @@ return [
         'screenshot_desktop' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.screenshot_desktop',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.screenshot_desktop.description',
             'config' => [
                 'type' => 'file',
                 'allowed' => 'common-image-types',
@@ -217,7 +208,6 @@ return [
         'video' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.video',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.video.description',
             'config' => [
                 'type' => 'file',
                 'allowed' => 'common-image-types',
@@ -227,7 +217,6 @@ return [
         'technology' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.technology',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.technology.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingleBox',
@@ -246,7 +235,6 @@ return [
         'industry' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.industry',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.industry.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingleBox',
@@ -265,7 +253,6 @@ return [
         'target_group' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.target_group',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.target_group.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingleBox',
@@ -281,10 +268,27 @@ return [
                 'multiple' => 1,
             ],
         ],
+        'task' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.task',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingleBox',
+                'foreign_table' => 'sys_tag',
+                'foreign_table_where' => 'AND sys_tag.pid = ###PAGE_TSCONFIG_ID###',
+                'MM' => 'sys_tag_record_mm',
+                'MM_opposite_field' => 'items',
+                'MM_match_fields' => [
+                    'tablenames' => 'tx_references_domain_model_reference',
+                    'fieldname' => 'task',
+                ],
+                'minitems' => 0,
+                'multiple' => 1,
+            ],
+        ],
         'country' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.country',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.country.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -297,7 +301,6 @@ return [
         'duration' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.duration',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.duration.description',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -308,7 +311,6 @@ return [
         'green_hosting' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.green_hosting',
-            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.green_hosting.description',
             'config' => [
                 'type' => 'check',
                 'items' => [

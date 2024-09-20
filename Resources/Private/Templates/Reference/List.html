@@ -21,7 +21,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
     <table class="tx_references">
         <tr>
             <th><f:translate key="tx_references_domain_model_reference.name" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.slug" /></th>
             <th><f:translate key="tx_references_domain_model_reference.teaser" /></th>
             <th><f:translate key="tx_references_domain_model_reference.description" /></th>
             <th><f:translate key="tx_references_domain_model_reference.link" /></th>
@@ -37,15 +36,12 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <th><f:translate key="tx_references_domain_model_reference.country" /></th>
             <th><f:translate key="tx_references_domain_model_reference.duration" /></th>
             <th><f:translate key="tx_references_domain_model_reference.green_hosting" /></th>
-            <th></th>
-            <th></th>
         </tr>
         <f:for each="{references}" as="reference">
             <tr>
                 <td><f:link.action action="show" arguments="{reference : reference}">{reference.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.slug}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{reference : reference}">{reference.teaser}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.description}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{reference : reference}">{reference.description -> f:format.html()}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{reference : reference}">{reference.link}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{reference : reference}">{reference.logo.originalResource.name}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{reference : reference}">{reference.screenshot_smartphone.originalResource.name}</f:link.action></td>
@@ -59,12 +55,9 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 <td><f:link.action action="show" arguments="{reference : reference}">{reference.country}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{reference : reference}">{reference.duration}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{reference : reference}">{reference.green_hosting}</f:link.action></td>
-                <td><f:link.action action="edit" arguments="{reference : reference}">Edit</f:link.action></td>
-                <td><f:link.action action="delete" arguments="{reference : reference}">Delete</f:link.action></td>
             </tr>
         </f:for>
     </table>
 
-    <f:link.action action="new">New Reference</f:link.action>
 </f:section>
 </html>

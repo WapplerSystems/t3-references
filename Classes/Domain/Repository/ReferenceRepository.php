@@ -20,8 +20,6 @@ namespace wapplersystems\References\Domain\Repository;
 class ReferenceRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
 
-    /**
-     * @var array
-     */
-    protected $defaultOrderings;
+
+
 }
