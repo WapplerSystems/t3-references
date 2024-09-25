@@ -1,63 +1,63 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 This template is responsible for creating a table of domain objects.
 
 If you modify this template, do not forget to change the overwrite settings
 in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Reference:
-          List.html: keep
+Resources:
+Private:
+Templates:
+Reference:
+List.html: keep
 
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content">
-    <h1>Listing for Reference</h1>
 
-    <f:flashMessages />
+    <f:flashMessages/>
 
-    <table class="tx_references">
-        <tr>
-            <th><f:translate key="tx_references_domain_model_reference.name" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.teaser" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.description" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.link" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.logo" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.screenshot_smartphone" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.screenshot_tablet" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.screenshot_laptop" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.screenshot_desktop" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.video" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.technology" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.industry" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.target_group" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.country" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.duration" /></th>
-            <th><f:translate key="tx_references_domain_model_reference.green_hosting" /></th>
-        </tr>
-        <f:for each="{references}" as="reference">
-            <tr>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.teaser}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.description -> f:format.html()}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.link}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.logo.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.screenshot_smartphone.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.screenshot_tablet.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.screenshot_laptop.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.screenshot_desktop.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.video.originalResource.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.technology}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.industry}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.target_group}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.country}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.duration}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{reference : reference}">{reference.green_hosting}</f:link.action></td>
-            </tr>
-        </f:for>
-    </table>
+
+    <f:for each="{references}" as="reference">
+
+        <f:render partial="Reference" arguments="{_all}" />
+
+    </f:for>
+
+
+            <label for="industry-select">Branche:</label>
+            <select id="industry-select" name="industry">
+                <option value="">Bitte wählen</option>
+                <f:for each="{references}" as="reference">
+
+                </f:for>
+            </select>
+
+            <label for="technology-select">Verwendete Technik:</label>
+            <select id="technology-select" name="technology">
+                <option value="">Bitte wählen</option>
+                <f:for each="{references}" as="reference">
+                    <option value=""></option>
+                </f:for>
+            </select>
+
+            <label for="target_group-select">Zielgruppe:</label>
+            <select id="target_group-select" name="target_group">
+                <option value="">Bitte wählen</option>
+
+            </select>
+
+            <label for="country-select">Land:</label>
+            <select id="country-select" name="country">
+                <option value="">Bitte wählen</option>
+
+            </select>
+
+            <button type="submit">Suchen</button>
+            </tbody>
+        </table>
+    </form>
+
 
 </f:section>
 </html>

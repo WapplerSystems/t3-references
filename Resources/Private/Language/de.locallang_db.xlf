@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:references/Resources/Private/Language/locallang_db.xlf" date="2024-09-16T16:03:02Z" product-name="references">
+		<header/>
+		<body>
+			<trans-unit id="tx_references_domain_model_reference" resname="tx_references_domain_model_reference">
+				<source>Reference</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.description" resname="tx_references_domain_model_reference.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.name" resname="tx_references_domain_model_reference.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.name.description" resname="tx_references_domain_model_reference.name.description">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.slug" resname="tx_references_domain_model_reference.slug">
+				<source>Slug</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.slug.description" resname="tx_references_domain_model_reference.slug.description">
+				<source>Slug</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.teaser" resname="tx_references_domain_model_reference.teaser">
+				<source>Teaser</source>
+				<target>Anreißer Text </target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.teaser.description" resname="tx_references_domain_model_reference.teaser.description">
+				<source>Teaser</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.description.description" resname="tx_references_domain_model_reference.description.description">
+				<source>Description</source>
+				<target>Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.link" resname="tx_references_domain_model_reference.link">
+				<source>Link</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.link.description" resname="tx_references_domain_model_reference.link.description">
+				<source>Link</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.logo" resname="tx_references_domain_model_reference.logo">
+				<source>Logo</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.logo.description" resname="tx_references_domain_model_reference.logo.description">
+				<source>Logo</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.screenshot_smartphone" resname="tx_references_domain_model_reference.screenshot_smartphone">
+				<source>Screenshot Smartphone</source>
+				<target>Smartphone Screenshot</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.screenshot_smartphone.description" resname="tx_references_domain_model_reference.screenshot_smartphone.description">
+				<source>Screenshot Smartphone</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.screenshot_tablet" resname="tx_references_domain_model_reference.screenshot_tablet">
+				<source>Screenshot Tablet</source>
+				<target>Tablet Screenshot</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.screenshot_tablet.description" resname="tx_references_domain_model_reference.screenshot_tablet.description">
+				<source>Screenshot Tablet</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.screenshot_laptop" resname="tx_references_domain_model_reference.screenshot_laptop">
+				<source>Screenshot Laptop</source>
+				<target>Laptop Screenshot</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.screenshot_laptop.description" resname="tx_references_domain_model_reference.screenshot_laptop.description">
+				<source>Screenshot Laptop</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.screenshot_desktop" resname="tx_references_domain_model_reference.screenshot_desktop">
+				<source>Screenshot Desktop</source>
+				<target>Desktop Screenshot</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.screenshot_desktop.description" resname="tx_references_domain_model_reference.screenshot_desktop.description">
+				<source>Screenshot Desktop</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.video" resname="tx_references_domain_model_reference.video">
+				<source>Video</source>
+				<target>Video</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.video.description" resname="tx_references_domain_model_reference.video.description">
+				<source>Video</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.technology" resname="tx_references_domain_model_reference.technology">
+				<source>Technology</source>
+				<target>verwendete Technik</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.technology.description" resname="tx_references_domain_model_reference.technology.description">
+				<source>Technology</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.industry" resname="tx_references_domain_model_reference.industry">
+				<source>Industry</source>
+				<target>Branche</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.industry.description" resname="tx_references_domain_model_reference.industry.description">
+				<source>Industry</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.target_group" resname="tx_references_domain_model_reference.target_group">
+				<source>Target Group</source>
+				<target>Zielgruppe</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.target_group.description" resname="tx_references_domain_model_reference.target_group.description">
+				<source>Target Group</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.task" resname="tx_references_domain_model_reference.task">
+				<source>Task</source>
+				<target>Tätigkeit</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.task.description" resname="tx_references_domain_model_reference.task.description">
+				<source>Task</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.country" resname="tx_references_domain_model_reference.country">
+				<source>Country</source>
+				<target>Land</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.country.description" resname="tx_references_domain_model_reference.country.description">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.duration" resname="tx_references_domain_model_reference.duration">
+				<source>Duration</source>
+				<target>Dauer</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.duration.description" resname="tx_references_domain_model_reference.duration.description">
+				<source>Duration</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.green_hosting" resname="tx_references_domain_model_reference.green_hosting">
+				<source>Green Hosting</source>
+				<target>Hosting mit regenativer Energie</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.green_hosting.description" resname="tx_references_domain_model_reference.green_hosting.description">
+				<source>Green Hosting</source>
+				<target>Hosting mit regenativer Energie</target>
+			</trans-unit>
+			<trans-unit id="tx_references_list.name" resname="tx_references_list.name">
+				<source>List</source>
+			</trans-unit>
+			<trans-unit id="tx_references_list.description" resname="tx_references_list.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tab.media">
+				<source>Media</source>
+				<target>Medien</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

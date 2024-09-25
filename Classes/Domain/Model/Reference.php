@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace wapplersystems\References\Domain\Model;
 
 
+use TYPO3\CMS\Extbase\Domain\Model\Tag;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /**
  * This file is part of the "Referenzen" Extension for TYPO3 CMS.
  *
@@ -107,23 +110,23 @@ class Reference extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * technology
      *
-     * @var int
+     * @var ObjectStorage<Tag>
      */
     protected $technology;
 
     /**
      * industry
      *
-     * @var int
+     * @var ObjectStorage<Tag>
      */
     protected $industry;
 
     /**
      * target_group
      *
-     * @var int
+     * @var ObjectStorage<Tag>
      */
-    protected $target_group;
+    protected $targetGroup;
 
     /**
      * country
@@ -145,6 +148,10 @@ class Reference extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var bool
      */
     protected $green_hosting;
+
+
+
+
 
     /**
      * Returns the name
@@ -377,68 +384,7 @@ class Reference extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->video = $video;
     }
 
-    /**
-     * Returns the technology
-     *
-     * @return int
-     */
-    public function getTechnology()
-    {
-        return $this->technology;
-    }
 
-    /**
-     * Sets the technology
-     *
-     * @param int $technology
-     * @return void
-     */
-    public function setTechnology(int $technology)
-    {
-        $this->technology = $technology;
-    }
-
-    /**
-     * Returns the industry
-     *
-     * @return int
-     */
-    public function getIndustry()
-    {
-        return $this->industry;
-    }
-
-    /**
-     * Sets the industry
-     *
-     * @param int $industry
-     * @return void
-     */
-    public function setIndustry(int $industry)
-    {
-        $this->industry = $industry;
-    }
-
-    /**
-     * Returns the target_group
-     *
-     * @return int
-     */
-    public function getTarget_group()
-    {
-        return $this->target_group;
-    }
-
-    /**
-     * Sets the target_group
-     *
-     * @param int $target_group
-     * @return void
-     */
-    public function setTarget_group(int $target_group)
-    {
-        $this->target_group = $target_group;
-    }
 
     /**
      * Returns the country
@@ -512,4 +458,40 @@ class Reference extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->green_hosting;
     }
+
+    public function getTechnology(): ObjectStorage
+    {
+        return $this->technology;
+    }
+
+    public function setTechnology(ObjectStorage $technology): void
+    {
+        $this->technology = $technology;
+    }
+
+    public function getIndustry(): ObjectStorage
+    {
+        return $this->industry;
+    }
+
+    public function setIndustry(ObjectStorage $industry): void
+    {
+        $this->industry = $industry;
+    }
+
+    public function getTargetGroup(): ?ObjectStorage
+    {
+        return $this->target_group;
+    }
+
+    public function setTargetGroup(ObjectStorage $target_group): void
+    {
+        $this->target_group = $target_group;
+    }
+
+
+
+
+
+
 }

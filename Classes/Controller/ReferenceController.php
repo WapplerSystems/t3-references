@@ -36,10 +36,39 @@ class ReferenceController extends ActionController
     public function listAction(): \Psr\Http\Message\ResponseInterface
     {
         $references = $this->referenceRepository->findAll();
-        $this->view->assign('references', $references);
-        return $this->htmlResponse();
-    }
 
+        //ToDo jeweiligen Tags holen
+
+
+        $this->view->assignMultiple([
+            'references' => $references,
+            'xyz' => 'kurtgkugtrkuhg',
+        ]);
+
+        return $this->htmlResponse();
+
+
+    }
+    /**
+     * Renders the search form with the dropdown
+     */
+   /** public function searchFormAction()
+    {
+        // Hole alle Referenzen aus der Datenbank
+        $references = $this->referenceRepository->findAll();
+
+        // Übergib die Daten an das Template
+        $this->view->assign('references', $references);
+    }*/
+    /**
+     * Perform search based on the selected reference
+     */
+   /** public function searchResultAction($reference)
+    {
+        // Finde die gewählte Referenz und gebe sie an das Template weiter
+        $selectedReference = $this->referenceRepository->findByUid($reference);
+        $this->view->assign('reference', $references);
+    }*/
     /**
      * action show
      *
