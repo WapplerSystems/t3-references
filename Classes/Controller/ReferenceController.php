@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace wapplersystems\References\Controller;
 
 
+use TYPO3\CMS\Extbase\Domain\Repository\TagRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use wapplersystems\References\Domain\Repository\ReferenceRepository;
 
@@ -23,7 +24,7 @@ use wapplersystems\References\Domain\Repository\ReferenceRepository;
 class ReferenceController extends ActionController
 {
 
-    public function __construct(readonly ReferenceRepository $referenceRepository)
+    public function __construct(readonly ReferenceRepository $referenceRepository, readonly TagRepository $tagRepository)
     {
     }
 
@@ -39,6 +40,7 @@ class ReferenceController extends ActionController
 
         //ToDo jeweiligen Tags holen
 
+        $tags = $this->tagRepository->findAll();
 
         $this->view->assignMultiple([
             'references' => $references,
