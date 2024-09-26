@@ -1,34 +1,41 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:wsref="http://typo3.org/ns/wapplersystems/References/ViewHelpers" data-namespace-typo3-fluid="true">
 
-<h2>{reference.name}</h2>
-<p>{reference.teaser}</p>
-{reference.description -> f:format.html()}
-<a href="{reference.link}">Projekt besuchen:  </a>
+<div class="reference__item {wsref:tag(tags:reference.technology,classPrefix:'reference-tag--')} ">
 
 
-<f:if condition="{reference.logo}">
-    <f:image image="{reference.logo}" />
-</f:if>
+    <h2>{reference.name}</h2>
+    <p>{reference.teaser}</p>
+    {reference.description -> f:format.html()}
+    <a href="{reference.link}">Projekt besuchen:  </a>
 
-<f:debug>{reference}</f:debug>
 
-<p>Technologien:
-<f:for each="{reference.technology}" as="technology">
-    <span>{technology.title}</span>
-</f:for>
-</p>
+    <f:if condition="{reference.logo}">
+        <f:image image="{reference.logo}" />
+    </f:if>
 
-<p>Industry:
-    <f:for each="{reference.industry}" as="industry">
-        <span>{industry.title}</span>
-    </f:for>
-</p>
-<p>Target Group:
-    <f:for each="{reference.targetGroup}" as="targetGroup">
-        <span>{targetGroup.title}</span>
-    </f:for>
-</p>
-<hr>
+    <f:debug>{reference}</f:debug>
+
+    <p>Technologien:
+        <f:for each="{reference.technology}" as="technology">
+            <span>{technology.title}</span>
+        </f:for>
+    </p>
+
+    <p>Industry:
+        <f:for each="{reference.industry}" as="industry">
+            <span>{industry.title}</span>
+        </f:for>
+    </p>
+    <p>Target Group:
+        <f:for each="{reference.targetGroup}" as="targetGroup">
+            <span>{targetGroup.title}</span>
+        </f:for>
+    </p>
+    <hr>
+
+
+</div>
+
 
 
 </html>
