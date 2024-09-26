@@ -481,12 +481,12 @@ class Reference extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     public function getTargetGroup(): ?ObjectStorage
     {
-        return $this->target_group;
+        return $this->targetGroup;
     }
 
-    public function setTargetGroup(ObjectStorage $target_group): void
+    public function setTargetGroup(ObjectStorage $targetGroup): void
     {
-        $this->target_group = $target_group;
+        $this->targetGroup = $targetGroup;
     }
 
 
