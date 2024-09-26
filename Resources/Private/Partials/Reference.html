@@ -3,7 +3,7 @@
 <h2>{reference.name}</h2>
 <p>{reference.teaser}</p>
 {reference.description -> f:format.html()}
-<a href="{reference.link}">Projekt besuchen</a>
+<a href="{reference.link}">Projekt besuchen:  </a>
 
 
 <f:if condition="{reference.logo}">
@@ -20,7 +20,7 @@
 
 <p>Industry:
     <f:for each="{reference.industry}" as="industry">
-        <span>{technology.title}</span>
+        <span>{industry.title}</span>
     </f:for>
 </p>
 <p>Target Group:
