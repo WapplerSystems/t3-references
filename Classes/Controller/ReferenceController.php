@@ -40,7 +40,10 @@ class ReferenceController extends ActionController
 
         //ToDo jeweiligen Tags holen
 
-        $tags = $this->tagRepository->findAll();
+        if ($this->settings['technologyTagsPageId'] ?? false) {
+            $this->view->assign('technologyTags', $this->tagRepository->findByPid($this->settings['technologyTagsPageId']));
+        }
+
 
         $this->view->assignMultiple([
             'references' => $references,

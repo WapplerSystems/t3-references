@@ -1,22 +1,29 @@
-plugin.tx_references_list {
-    view {
-        templateRootPaths.0 = EXT:references/Resources/Private/Templates/
-        templateRootPaths.1 = {$plugin.tx_references_list.view.templateRootPath}
-        partialRootPaths.0 = EXT:references/Resources/Private/Partials/
-        partialRootPaths.1 = {$plugin.tx_references_list.view.partialRootPath}
-        layoutRootPaths.0 = EXT:references/Resources/Private/Layouts/
-        layoutRootPaths.1 = {$plugin.tx_references_list.view.layoutRootPath}
-    }
-    persistence {
-        storagePid = {$plugin.tx_references_list.persistence.storagePid}
-        #recursive = 1
-    }
-    features {
-        #skipDefaultArguments = 1
-        # if set to 1, the enable fields are ignored in BE context
-        ignoreAllEnableFieldsInBe = 0
-    }
-    mvc {
-        #callDefaultActionIfActionCantBeResolved = 1
-    }
+plugin.tx_references {
+  view {
+    templateRootPaths.0 = EXT:references/Resources/Private/Templates/
+    templateRootPaths.1 = {$plugin.tx_references.view.templateRootPath}
+    partialRootPaths.0 = EXT:references/Resources/Private/Partials/
+    partialRootPaths.1 = {$plugin.tx_references.view.partialRootPath}
+    layoutRootPaths.0 = EXT:references/Resources/Private/Layouts/
+    layoutRootPaths.1 = {$plugin.tx_references.view.layoutRootPath}
+  }
+
+  persistence {
+    storagePid = {$plugin.tx_references.persistence.storagePid}
+    #recursive = 1
+  }
+
+  features {
+    #skipDefaultArguments = 1
+    # if set to 1, the enable fields are ignored in BE context
+    ignoreAllEnableFieldsInBe = 0
+  }
+
+  mvc {
+    #callDefaultActionIfActionCantBeResolved = 1
+  }
+
+  settings {
+    technologyTagsPageId = {$plugin.tx_references.settings.technologyTagsPageId}
+  }
 }

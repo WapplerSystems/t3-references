@@ -1,62 +1,53 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default"/>
 
-This template is responsible for creating a table of domain objects.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-Resources:
-Private:
-Templates:
-Reference:
-List.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
 <f:section name="content">
 
     <f:flashMessages/>
 
-
     <f:for each="{references}" as="reference">
 
-        <f:render partial="Reference" arguments="{_all}" />
+        <f:render partial="Reference" arguments="{_all}"/>
 
     </f:for>
 
+    <div>
+        <label for="technology-select">Verwendete Technik:</label>
 
-            <label for="industry-select">Branche:</label>
-            <select id="industry-select" name="industry">
-                <option value="">Bitte wählen</option>
-                <f:for each="{references}" as="reference">
+        <f:for each="{technologyTags}" as="technologyTag">
+            <span data-tag="{technologyTag.uid}" class="badge text-bg-primary">{technologyTag.title}</span>
+        </f:for>
+    </div>
 
-                </f:for>
-            </select>
+    <label for="industry-select">Branche:</label>
+    <select id="industry-select" name="industry">
+        <option value="">Bitte wählen</option>
+        <f:for each="{references}" as="reference">
 
-            <label for="technology-select">Verwendete Technik:</label>
-            <select id="technology-select" name="technology">
-                <option value="">Bitte wählen</option>
-                <f:for each="{references}" as="reference">
-                    <option value=""></option>
-                </f:for>
-            </select>
+        </f:for>
+    </select>
 
-            <label for="target_group-select">Zielgruppe:</label>
-            <select id="target_group-select" name="target_group">
-                <option value="">Bitte wählen</option>
 
-            </select>
+    <select id="technology-select" name="technology">
+        <option value="">Bitte wählen</option>
+        <f:for each="{technologyTags}" as="reference">
+            <option value=""></option>
+        </f:for>
+    </select>
 
-            <label for="country-select">Land:</label>
-            <select id="country-select" name="country">
-                <option value="">Bitte wählen</option>
+    <label for="target_group-select">Zielgruppe:</label>
+    <select id="target_group-select" name="target_group">
+        <option value="">Bitte wählen</option>
 
-            </select>
+    </select>
 
-            <button type="submit">Suchen</button>
-            </tbody>
-        </table>
-    </form>
+    <label for="country-select">Land:</label>
+    <select id="country-select" name="country">
+        <option value="">Bitte wählen</option>
+
+    </select>
+
+    <button type="submit">Suchen</button>
 
 
 </f:section>

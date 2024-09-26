@@ -1,14 +1,20 @@
-plugin.tx_references_list {
-    view {
-        # cat=plugin.tx_references_list/file; type=string; label=Path to template root (FE)
-        templateRootPath = EXT:references/Resources/Private/Templates/
-        # cat=plugin.tx_references_list/file; type=string; label=Path to template partials (FE)
-        partialRootPath = EXT:references/Resources/Private/Partials/
-        # cat=plugin.tx_references_list/file; type=string; label=Path to template layouts (FE)
-        layoutRootPath = EXT:references/Resources/Private/Layouts/
-    }
-    persistence {
-        # cat=plugin.tx_references_list//a; type=string; label=Default storage PID
-        storagePid =
-    }
+plugin.tx_references {
+  view {
+    # cat=plugin.tx_references/file; type=string; label=Path to template root (FE)
+    templateRootPath = EXT:references/Resources/Private/Templates/
+    # cat=plugin.tx_references/file; type=string; label=Path to template partials (FE)
+    partialRootPath = EXT:references/Resources/Private/Partials/
+    # cat=plugin.tx_references/file; type=string; label=Path to template layouts (FE)
+    layoutRootPath = EXT:references/Resources/Private/Layouts/
+  }
+
+  persistence {
+    # cat=plugin.tx_references//a; type=string; label=Default storage PID
+    storagePid =
+  }
+
+  settings {
+    # cat=plugin.tx_references//b; type=string; label=Technology tags page ID
+    technologyTagsPageId =
+  }
 }
