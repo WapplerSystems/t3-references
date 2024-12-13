@@ -3,7 +3,6 @@
 namespace wapplersystems\References\ViewHelpers;
 
 
-use FluidTYPO3\Vhs\Traits\TagViewHelperTrait;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -13,7 +12,6 @@ use WapplerSystems\WsT3bootstrap\Fluid\ViewHelper\TagBuilder;
  */
 class TagViewHelper extends AbstractViewHelper
 {
-    use TagViewHelperTrait;
 
     /**
      * @return void
