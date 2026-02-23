@@ -489,9 +489,4 @@ class Reference extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->targetGroup = $targetGroup;
     }
 
-
-
-
-
-
 }

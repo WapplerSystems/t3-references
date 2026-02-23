@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace wapplersystems\References\Controller;
 
 
+use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Extbase\Domain\Repository\TagRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use wapplersystems\References\Domain\Repository\ReferenceRepository;
@@ -40,8 +41,18 @@ class ReferenceController extends ActionController
 
         //ToDo jeweiligen Tags holen
 
+
         if ($this->settings['technologyTagsPageId'] ?? false) {
-            $this->view->assign('technologyTags', $this->tagRepository->findByPid($this->settings['technologyTagsPageId']));
+            $this->view->assign('technologyTags', $this->tagRepository->findByPid((int)$this->settings['technologyTagsPageId']));
+        }
+        //DebugUtility::debug($this->settings['industryTagsPageId']);
+
+        if ($this->settings['industryTagsPageId'] ?? false) {
+            $this->view->assign('industryTags', $this->tagRepository->findByPid((int)$this->settings['industryTagsPageId']));
+        }
+
+        if ($this->settings['targetGroupTagsPageId'] ?? false) {
+            $this->view->assign('targetGroupTags', $this->tagRepository->findByPid((int)$this->settings['targetGroupTagsPageId']));
         }
 
 

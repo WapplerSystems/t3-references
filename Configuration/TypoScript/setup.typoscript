@@ -26,4 +26,10 @@ plugin.tx_references {
   settings {
     technologyTagsPageId = {$plugin.tx_references.settings.technologyTagsPageId}
   }
+  settings {
+    industryTagsPageId = {$plugin.tx_references.settings.industryTagsPageId}
+  }
+  settings {
+    targetGroupTagsPageId = {$plugin.tx_references.settings.targetGroupTagsPageId}
+  }
 }

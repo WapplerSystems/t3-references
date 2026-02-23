@@ -1,6 +1,13 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:wsref="http://typo3.org/ns/wapplersystems/References/ViewHelpers" data-namespace-typo3-fluid="true">
-
+<head>
+    <!-- Bootstrap CSS einfügen -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+</head>
 <div class="reference__item {wsref:tag(tags:reference.technology,classPrefix:'reference-tag--')} ">
+    <div class="reference__item {wsref:tag(tags:reference.industry,classPrefix:'reference-tag--')} ">
+        <div class="reference__item {wsref:tag(tags:reference.targetGroup,classPrefix:'reference-tag--')} ">
+
 
 
     <h2>{reference.name}</h2>
@@ -13,22 +20,21 @@
         <f:image image="{reference.logo}" />
     </f:if>
 
-    <f:debug>{reference}</f:debug>
 
     <p>Technologien:
         <f:for each="{reference.technology}" as="technology">
-            <span>{technology.title}</span>
+            <span>{technology.title}</span> &nbsp
         </f:for>
     </p>
 
     <p>Industry:
         <f:for each="{reference.industry}" as="industry">
-            <span>{industry.title}</span>
+            <span>{industry.title}</span>&nbsp;
         </f:for>
     </p>
     <p>Target Group:
         <f:for each="{reference.targetGroup}" as="targetGroup">
-            <span>{targetGroup.title}</span>
+            <span>{targetGroup.title}</span>&nbsp;
         </f:for>
     </p>
     <hr>
