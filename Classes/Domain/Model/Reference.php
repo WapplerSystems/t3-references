@@ -4,457 +4,214 @@ declare(strict_types=1);
 
 namespace wapplersystems\References\Domain\Model;
 
-
+use TYPO3\CMS\Extbase\Attribute\ORM\Cascade;
+use TYPO3\CMS\Extbase\Attribute\Validate;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Domain\Model\Tag;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-/**
- * This file is part of the "Referenzen" Extension for TYPO3 CMS.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * (c) 2024 WapplerSystems
- */
-
-/**
- * Reference
- */
-class Reference extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Reference extends AbstractEntity
 {
 
-    /**
-     * name
-     *
-     * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $name;
+    #[Validate('NotEmpty')]
+    protected string $name = '';
+
+    protected string $slug = '';
+
+    protected string $teaser = '';
+
+    protected string $description = '';
+
+    protected string $link = '';
+
+    #[Cascade('remove')]
+    protected ?FileReference $logo = null;
+
+    #[Cascade('remove')]
+    protected ?FileReference $screenshot_smartphone = null;
+
+    #[Cascade('remove')]
+    protected ?FileReference $screenshot_tablet = null;
+
+    #[Cascade('remove')]
+    protected ?FileReference $screenshot_laptop = null;
+
+    #[Cascade('remove')]
+    protected ?FileReference $screenshot_desktop = null;
+
+    #[Cascade('remove')]
+    protected ?FileReference $video = null;
 
     /**
-     * slug
-     *
-     * @var string
-     */
-    protected $slug;
-
-    /**
-     * teaser
-     *
-     * @var string
-     */
-    protected $teaser;
-
-    /**
-     * description
-     *
-     * @var string
-     */
-    protected $description;
-
-    /**
-     * link
-     *
-     * @var string
-     */
-    protected $link;
-
-    /**
-     * logo
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
-     */
-    protected $logo;
-
-    /**
-     * screenshot_smartphone
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
-     */
-    protected $screenshot_smartphone;
-
-    /**
-     * screenshot_tablet
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
-     */
-    protected $screenshot_tablet;
-
-    /**
-     * screenshot_laptop
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
-     */
-    protected $screenshot_laptop;
-
-    /**
-     * screenshot_desktop
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
-     */
-    protected $screenshot_desktop;
-
-    /**
-     * video
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
-     */
-    protected $video;
-
-    /**
-     * technology
-     *
      * @var ObjectStorage<Tag>
      */
-    protected $technology;
+    protected ObjectStorage $technology;
 
     /**
-     * industry
-     *
      * @var ObjectStorage<Tag>
      */
-    protected $industry;
+    protected ObjectStorage $industry;
 
     /**
-     * target_group
-     *
-     * @var ObjectStorage<Tag>
+     * @var ObjectStorage<Tag>|null
      */
-    protected $targetGroup;
+    protected ?ObjectStorage $targetGroup = null;
 
-    /**
-     * country
-     *
-     * @var int
-     */
-    protected $country;
+    protected int $country = 0;
 
-    /**
-     * duration
-     *
-     * @var string
-     */
-    protected $duration;
+    protected string $duration = '';
 
-    /**
-     * green_hosting
-     *
-     * @var bool
-     */
-    protected $green_hosting;
+    protected bool $green_hosting = false;
 
+    public function __construct()
+    {
+        $this->technology = new ObjectStorage();
+        $this->industry = new ObjectStorage();
+        $this->targetGroup = new ObjectStorage();
+    }
 
-
-
-
-    /**
-     * Returns the name
-     *
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Sets the name
-     *
-     * @param string $name
-     * @return void
-     */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * Returns the slug
-     *
-     * @return string
-     */
-    public function getSlug()
+    public function getSlug(): string
     {
         return $this->slug;
     }
 
-    /**
-     * Sets the slug
-     *
-     * @param string $slug
-     * @return void
-     */
-    public function setSlug(string $slug)
+    public function setSlug(string $slug): void
     {
         $this->slug = $slug;
     }
 
-    /**
-     * Returns the teaser
-     *
-     * @return string
-     */
-    public function getTeaser()
+    public function getTeaser(): string
     {
         return $this->teaser;
     }
 
-    /**
-     * Sets the teaser
-     *
-     * @param string $teaser
-     * @return void
-     */
-    public function setTeaser(string $teaser)
+    public function setTeaser(string $teaser): void
     {
         $this->teaser = $teaser;
     }
 
-    /**
-     * Returns the description
-     *
-     * @return string
-     */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * Sets the description
-     *
-     * @param string $description
-     * @return void
-     */
-    public function setDescription(string $description)
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
 
-    /**
-     * Returns the link
-     *
-     * @return string
-     */
-    public function getLink()
+    public function getLink(): string
     {
         return $this->link;
     }
 
-    /**
-     * Sets the link
-     *
-     * @param string $link
-     * @return void
-     */
-    public function setLink(string $link)
+    public function setLink(string $link): void
     {
         $this->link = $link;
     }
 
-    /**
-     * Returns the logo
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getLogo()
+    public function getLogo(): ?FileReference
     {
         return $this->logo;
     }
 
-    /**
-     * Sets the logo
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $logo
-     * @return void
-     */
-    public function setLogo(\TYPO3\CMS\Extbase\Domain\Model\FileReference $logo)
+    public function setLogo(FileReference $logo): void
     {
         $this->logo = $logo;
     }
 
-    /**
-     * Returns the screenshot_smartphone
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getScreenshot_smartphone()
+    public function getScreenshotSmartphone(): ?FileReference
     {
         return $this->screenshot_smartphone;
     }
 
-    /**
-     * Sets the screenshot_smartphone
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_smartphone
-     * @return void
-     */
-    public function setScreenshot_smartphone(\TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_smartphone)
+    public function setScreenshotSmartphone(FileReference $screenshot_smartphone): void
     {
         $this->screenshot_smartphone = $screenshot_smartphone;
     }
 
-    /**
-     * Returns the screenshot_tablet
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getScreenshot_tablet()
+    public function getScreenshotTablet(): ?FileReference
     {
         return $this->screenshot_tablet;
     }
 
-    /**
-     * Sets the screenshot_tablet
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_tablet
-     * @return void
-     */
-    public function setScreenshot_tablet(\TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_tablet)
+    public function setScreenshotTablet(FileReference $screenshot_tablet): void
     {
         $this->screenshot_tablet = $screenshot_tablet;
     }
 
-    /**
-     * Returns the screenshot_laptop
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getScreenshot_laptop()
+    public function getScreenshotLaptop(): ?FileReference
     {
         return $this->screenshot_laptop;
     }
 
-    /**
-     * Sets the screenshot_laptop
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_laptop
-     * @return void
-     */
-    public function setScreenshot_laptop(\TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_laptop)
+    public function setScreenshotLaptop(FileReference $screenshot_laptop): void
     {
         $this->screenshot_laptop = $screenshot_laptop;
     }
 
-    /**
-     * Returns the screenshot_desktop
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getScreenshot_desktop()
+    public function getScreenshotDesktop(): ?FileReference
     {
         return $this->screenshot_desktop;
     }
 
-    /**
-     * Sets the screenshot_desktop
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_desktop
-     * @return void
-     */
-    public function setScreenshot_desktop(\TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_desktop)
+    public function setScreenshotDesktop(FileReference $screenshot_desktop): void
     {
         $this->screenshot_desktop = $screenshot_desktop;
     }
 
-    /**
-     * Returns the video
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getVideo()
+    public function getVideo(): ?FileReference
     {
         return $this->video;
     }
 
-    /**
-     * Sets the video
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $video
-     * @return void
-     */
-    public function setVideo(\TYPO3\CMS\Extbase\Domain\Model\FileReference $video)
+    public function setVideo(FileReference $video): void
     {
         $this->video = $video;
     }
 
-
-
-    /**
-     * Returns the country
-     *
-     * @return int
-     */
-    public function getCountry()
+    public function getCountry(): int
     {
         return $this->country;
     }
 
-    /**
-     * Sets the country
-     *
-     * @param int $country
-     * @return void
-     */
-    public function setCountry(int $country)
+    public function setCountry(int $country): void
     {
         $this->country = $country;
     }
 
-    /**
-     * Returns the duration
-     *
-     * @return string
-     */
-    public function getDuration()
+    public function getDuration(): string
     {
         return $this->duration;
     }
 
-    /**
-     * Sets the duration
-     *
-     * @param string $duration
-     * @return void
-     */
-    public function setDuration(string $duration)
+    public function setDuration(string $duration): void
     {
         $this->duration = $duration;
     }
 
-    /**
-     * Returns the green_hosting
-     *
-     * @return bool
-     */
-    public function getGreen_hosting()
+    public function getGreenHosting(): bool
     {
         return $this->green_hosting;
     }
 
-    /**
-     * Sets the green_hosting
-     *
-     * @param bool $green_hosting
-     * @return void
-     */
-    public function setGreen_hosting(bool $green_hosting)
+    public function setGreenHosting(bool $green_hosting): void
     {
         $this->green_hosting = $green_hosting;
     }
 
-    /**
-     * Returns the boolean state of green_hosting
-     *
-     * @return bool
-     */
-    public function isGreen_hosting()
+    public function isGreenHosting(): bool
     {
         return $this->green_hosting;
     }
@@ -488,10 +245,4 @@ class Reference extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->targetGroup = $targetGroup;
     }
-
-
-
-
-
-
 }

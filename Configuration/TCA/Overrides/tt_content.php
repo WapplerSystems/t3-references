@@ -1,7 +1,11 @@
 <?php
+
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+
 defined('TYPO3') || die();
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+ExtensionUtility::registerPlugin(
     'References',
     'references_list',
     'List',
@@ -12,22 +16,15 @@ if (!is_array($GLOBALS['TCA']['tt_content']['types']['references_list'] ?? false
     $GLOBALS['TCA']['tt_content']['types']['references_list'] = [];
 }
 
-// Add content element to selector list
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
+ExtensionManagementUtility::addTcaSelectItem(
     'tt_content',
     'CType',
     [
-        'List',
-        'references_list',
-        'references-plugin-list',
-        'references'
+        'label' => 'List',
+        'value' => 'references_list',
+        'icon' => 'references-plugin-list',
+        'group' => 'references',
     ]
-);
-
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-    '*',
-    'FILE:EXT:references/Configuration/FlexForms/flexform_list.xml',
-    'references_list'
 );
 
 $GLOBALS['TCA']['tt_content']['types']['references_list']['showitem'] = '
@@ -50,3 +47,6 @@ $GLOBALS['TCA']['tt_content']['types']['references_list']['showitem'] = '
         rowDescription,
     --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
 ';
+
+$GLOBALS['TCA']['tt_content']['types']['references_list']['columnsOverrides']['pi_flexform']['config']['ds'] =
+    'FILE:EXT:references/Configuration/FlexForms/flexform_list.xml';
