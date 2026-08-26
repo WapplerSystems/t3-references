@@ -105,6 +105,9 @@
 			<trans-unit id="tx_references_logoslider.description" resname="tx_references_logoslider.description">
 				<source>Endless scrolling strip of reference logos</source>
 			</trans-unit>
+			<trans-unit id="tx_references_logoslider.listPageId" resname="tx_references_logoslider.listPageId">
+				<source>Reference list page</source>
+			</trans-unit>
 			<trans-unit id="tab.media">
 				<source>Media</source>
 			</trans-unit>

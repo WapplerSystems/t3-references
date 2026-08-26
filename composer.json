@@ -13,6 +13,9 @@
 		"typo3/cms-core": "^13.4",
 		"wapplersystems/tag": "^13.0"
 	},
+	"suggest": {
+		"sjbr/static-info-tables": "Enables the country filter on the reference list/logo slider"
+	},
 	"autoload": {
 		"psr-4": {
 			"wapplersystems\\References\\": "Classes"

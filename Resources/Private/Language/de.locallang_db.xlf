@@ -119,6 +119,10 @@
 				<source>Endless scrolling strip of reference logos</source>
 				<target>Endlos scrollendes Band mit Referenz-Logos</target>
 			</trans-unit>
+			<trans-unit id="tx_references_logoslider.listPageId" resname="tx_references_logoslider.listPageId">
+				<source>Reference list page</source>
+				<target>Referenzliste-Seite</target>
+			</trans-unit>
 			<trans-unit id="tab.media">
 				<source>Media</source>
 				<target>Medien</target>

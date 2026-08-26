@@ -93,7 +93,7 @@
 
         <div class="reference__footer">
             <f:if condition="{reference.link}">
-                <a class="reference__link no-icon" href="{reference.link}" target="_blank" rel="noreferrer"><f:translate key="reference_list.item.visitProject" /></a>
+                <f:link.typolink parameter="{reference.link}" class="reference__link no-icon" target="_blank" additionalAttributes="{rel: 'noreferrer'}"><f:translate key="reference_list.item.visitProject" /></f:link.typolink>
             </f:if>
             <f:if condition="{reference.description}">
                 <details class="reference__details">

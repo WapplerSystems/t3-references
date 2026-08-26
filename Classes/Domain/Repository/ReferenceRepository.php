@@ -7,6 +7,7 @@ namespace wapplersystems\References\Domain\Repository;
 use Doctrine\DBAL\ParameterType;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
@@ -38,7 +39,7 @@ class ReferenceRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $constraints[] = $query->contains('categories', (int)$categoryUid);
             }
         }
-        if ($country) {
+        if ($country && ExtensionManagementUtility::isLoaded('static_info_tables')) {
             $constraints[] = $query->equals('country', $country);
         }
 
@@ -117,9 +118,15 @@ class ReferenceRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
     /**
      * Countries actually assigned to a reference, for populating the country filter dropdown.
+     * Returns an empty list if static_info_tables (which provides the static_countries table
+     * the country field relies on) is not installed.
      */
     public function findUsedCountries(): array
     {
+        if (!ExtensionManagementUtility::isLoaded('static_info_tables')) {
+            return [];
+        }
+
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_references_domain_model_reference');
         $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
 
