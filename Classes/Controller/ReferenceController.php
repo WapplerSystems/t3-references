@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace wapplersystems\References\Controller;
 
 
-use TYPO3\CMS\Extbase\Domain\Repository\TagRepository;
+use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use wapplersystems\References\Domain\Repository\ReferenceRepository;
 
 /**
@@ -24,7 +25,7 @@ use wapplersystems\References\Domain\Repository\ReferenceRepository;
 class ReferenceController extends ActionController
 {
 
-    public function __construct(readonly ReferenceRepository $referenceRepository, readonly TagRepository $tagRepository)
+    public function __construct(readonly ReferenceRepository $referenceRepository)
     {
     }
 
@@ -32,57 +33,83 @@ class ReferenceController extends ActionController
     /**
      * action list
      *
+     * @param array<int, int|string> $categories One selected category uid per filter group, keyed by group uid
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function listAction(): \Psr\Http\Message\ResponseInterface
+    public function listAction(?array $categories = null, ?int $country = null, int $currentPage = 1): \Psr\Http\Message\ResponseInterface
     {
-        $references = $this->referenceRepository->findAll();
+        $categories = $categories ?? [];
 
-        //ToDo jeweiligen Tags holen
+        $references = $this->referenceRepository->findByFilters($categories, $country);
+        $paginator = new QueryResultPaginator($references, $currentPage, 10);
+        $pagination = new SimplePagination($paginator);
 
-        if ($this->settings['technologyTagsPageId'] ?? false) {
-            $this->view->assign('technologyTags', $this->tagRepository->findByPid($this->settings['technologyTagsPageId']));
+        $categoryGroups = $this->referenceRepository->findCategoryGroups();
+        $countryFilterOptions = $this->referenceRepository->findUsedCountries();
+
+        $activeFilters = [];
+        foreach ($categoryGroups as &$group) {
+            $selectedUid = isset($categories[$group['uid']]) ? (int)$categories[$group['uid']] : null;
+            $group['selectedUid'] = $selectedUid;
+            $group['selectedLabel'] = $this->findOptionLabel($group['options'], $selectedUid, 'title');
+
+            if ($selectedUid) {
+                $remainingCategories = $categories;
+                unset($remainingCategories[$group['uid']]);
+                $activeFilters[] = [
+                    'label' => $group['title'],
+                    'valueLabel' => $group['selectedLabel'],
+                    'removeArguments' => ['categories' => $remainingCategories, 'country' => $country],
+                ];
+            }
         }
-
+        unset($group);
 
         $this->view->assignMultiple([
-            'references' => $references,
-            'xyz' => 'kurtgkugtrkuhg',
+            'paginator' => $paginator,
+            'pagination' => $pagination,
+            'categoryGroups' => $categoryGroups,
+            'countryFilterOptions' => $countryFilterOptions,
+            'selectedCategories' => $categories,
+            'selectedCountry' => $country,
+            'selectedCountryLabel' => $this->findOptionLabel($countryFilterOptions, $country, 'cn_short_en'),
+            'activeFilters' => $activeFilters,
         ]);
 
         return $this->htmlResponse();
-
-
     }
-    /**
-     * Renders the search form with the dropdown
-     */
-   /** public function searchFormAction()
-    {
-        // Hole alle Referenzen aus der Datenbank
-        $references = $this->referenceRepository->findAll();
 
-        // Übergib die Daten an das Template
-        $this->view->assign('references', $references);
-    }*/
     /**
-     * Perform search based on the selected reference
+     * Looks up the human-readable label for a selected filter's uid within
+     * its option list, so the active filter can be shown as a chip.
      */
-   /** public function searchResultAction($reference)
+    private function findOptionLabel(array $options, ?int $uid, string $labelField): ?string
     {
-        // Finde die gewählte Referenz und gebe sie an das Template weiter
-        $selectedReference = $this->referenceRepository->findByUid($reference);
-        $this->view->assign('reference', $references);
-    }*/
+        if ($uid === null) {
+            return null;
+        }
+
+        foreach ($options as $option) {
+            if ((int)$option['uid'] === $uid) {
+                return $option[$labelField];
+            }
+        }
+
+        return null;
+    }
+
     /**
-     * action show
+     * action logoSlider
      *
-     * @param \wapplersystems\References\Domain\Model\Reference $reference
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function showAction(\wapplersystems\References\Domain\Model\Reference $reference): \Psr\Http\Message\ResponseInterface
+    public function logoSliderAction(): \Psr\Http\Message\ResponseInterface
     {
-        $this->view->assign('reference', $reference);
+        $this->view->assignMultiple([
+            'references' => $this->referenceRepository->findWithLogo(),
+            'listPageId' => $this->settings['listPageId'] ?? null,
+        ]);
+
         return $this->htmlResponse();
     }
 }

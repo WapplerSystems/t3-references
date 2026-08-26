@@ -1,54 +1,81 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:wsscss="http://typo3.org/ns/WapplerSystems/WsScss/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default"/>
 
 <f:section name="content">
 
+    <wsscss:asset.scss identifier="glightbox" href="EXT:template/Resources/Public/SCSS/components/glightbox.scss"/>
+    <f:asset.script identifier="glightbox" src="EXT:template/Resources/Public/JavaScript/glightbox/glightbox.min.js"/>
+
     <f:flashMessages/>
 
-    <f:for each="{references}" as="reference">
+    <f:form action="list" method="get" class="reference__filter-bar">
+        <f:for each="{categoryGroups}" as="group">
+            <div class="reference-filter-field d-flex align-items-center gap-2">
+                <label for="category-select-{group.uid}" class="form-label mb-0 text-nowrap">{group.title}:</label>
+                <f:form.select id="category-select-{group.uid}" name="categories[{group.uid}]" class="form-select"
+                                options="{group.options}" optionValueField="uid" optionLabelField="title"
+                                value="{group.selectedUid}" prependOptionLabel="{f:translate(key: 'reference_list.filter.pleaseChoose')}" prependOptionValue="" />
+            </div>
+        </f:for>
+
+        <div class="reference-filter-field d-flex align-items-center gap-2">
+            <label for="country-select" class="form-label mb-0 text-nowrap"><f:translate key="reference_list.filter.country" /></label>
+            <f:form.select id="country-select" name="country" class="form-select"
+                            options="{countryFilterOptions}" optionValueField="uid" optionLabelField="cn_short_en"
+                            value="{selectedCountry}" prependOptionLabel="{f:translate(key: 'reference_list.filter.pleaseChoose')}" prependOptionValue="" />
+        </div>
+
+        <button type="submit" class="reference__filter-submit"><f:translate key="reference_list.filter.submit" /></button>
+    </f:form>
+
+    <f:if condition="{activeFilters} || {selectedCountry}">
+        <div class="reference__active-filters">
+            <span class="reference__active-filters-label"><f:translate key="reference_list.filter.activeFilters" /></span>
+
+            <f:for each="{activeFilters}" as="filter">
+                <a class="reference__filter-chip" href="{f:uri.action(action: 'list', arguments: filter.removeArguments)}">{filter.label}: {filter.valueLabel} <span aria-hidden="true">&times;</span></a>
+            </f:for>
+            <f:if condition="{selectedCountry}">
+                <a class="reference__filter-chip" href="{f:uri.action(action: 'list', arguments: {categories: selectedCategories})}"><f:translate key="reference_list.filter.country" /> {selectedCountryLabel} <span aria-hidden="true">&times;</span></a>
+            </f:if>
+
+            <a class="reference__filter-chip reference__filter-chip--clear" href="{f:uri.action(action: 'list')}"><f:translate key="reference_list.filter.resetAll" /></a>
+        </div>
+    </f:if>
+
+    <f:for each="{paginator.paginatedItems}" as="reference" iteration="referenceIteration">
+
+        <f:variable name="loading" value="lazy" />
+        <f:if condition="{referenceIteration.isFirst}">
+            <f:variable name="loading" value="eager" />
+        </f:if>
 
         <f:render partial="Reference" arguments="{_all}"/>
 
     </f:for>
 
-    <div>
-        <label for="technology-select">Verwendete Technik:</label>
+    <f:if condition="{pagination.lastPageNumber} > 1">
+        <nav class="reference__pagination" aria-label="{f:translate(key: 'reference_list.pagination.label')}">
+            <f:if condition="{pagination.previousPageNumber}">
+                <a class="reference__pagination-link reference__pagination-link--prev" href="{f:uri.action(arguments: {categories: selectedCategories, country: selectedCountry, currentPage: pagination.previousPageNumber})}" aria-label="{f:translate(key: 'reference_list.pagination.previous')}">&lsaquo;</a>
+            </f:if>
 
-        <f:for each="{technologyTags}" as="technologyTag">
-            <span data-tag="{technologyTag.uid}" class="badge text-bg-primary">{technologyTag.title}</span>
-        </f:for>
-    </div>
+            <f:for each="{pagination.allPageNumbers}" as="pageNumber">
+                <f:if condition="{pageNumber} == {paginator.currentPageNumber}">
+                    <f:then>
+                        <span class="reference__pagination-link reference__pagination-link--current" aria-current="page">{pageNumber}</span>
+                    </f:then>
+                    <f:else>
+                        <a class="reference__pagination-link" href="{f:uri.action(arguments: {categories: selectedCategories, country: selectedCountry, currentPage: pageNumber})}">{pageNumber}</a>
+                    </f:else>
+                </f:if>
+            </f:for>
 
-    <label for="industry-select">Branche:</label>
-    <select id="industry-select" name="industry">
-        <option value="">Bitte wählen</option>
-        <f:for each="{references}" as="reference">
-
-        </f:for>
-    </select>
-
-
-    <select id="technology-select" name="technology">
-        <option value="">Bitte wählen</option>
-        <f:for each="{technologyTags}" as="reference">
-            <option value=""></option>
-        </f:for>
-    </select>
-
-    <label for="target_group-select">Zielgruppe:</label>
-    <select id="target_group-select" name="target_group">
-        <option value="">Bitte wählen</option>
-
-    </select>
-
-    <label for="country-select">Land:</label>
-    <select id="country-select" name="country">
-        <option value="">Bitte wählen</option>
-
-    </select>
-
-    <button type="submit">Suchen</button>
-
+            <f:if condition="{pagination.nextPageNumber}">
+                <a class="reference__pagination-link reference__pagination-link--next" href="{f:uri.action(arguments: {categories: selectedCategories, country: selectedCountry, currentPage: pagination.nextPageNumber})}" aria-label="{f:translate(key: 'reference_list.pagination.next')}">&rsaquo;</a>
+            </f:if>
+        </nav>
+    </f:if>
 
 </f:section>
 </html>

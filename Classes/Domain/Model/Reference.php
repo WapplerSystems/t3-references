@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace wapplersystems\References\Domain\Model;
 
 
-use TYPO3\CMS\Extbase\Domain\Model\Tag;
+use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
@@ -68,36 +68,36 @@ class Reference extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $logo;
 
     /**
-     * screenshot_smartphone
+     * screenshotSmartphone
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $screenshot_smartphone;
+    protected $screenshotSmartphone;
 
     /**
-     * screenshot_tablet
+     * screenshotTablet
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $screenshot_tablet;
+    protected $screenshotTablet;
 
     /**
-     * screenshot_laptop
+     * screenshotLaptop
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $screenshot_laptop;
+    protected $screenshotLaptop;
 
     /**
-     * screenshot_desktop
+     * screenshotDesktop
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $screenshot_desktop;
+    protected $screenshotDesktop;
 
     /**
      * video
@@ -108,25 +108,11 @@ class Reference extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $video;
 
     /**
-     * technology
+     * categories
      *
-     * @var ObjectStorage<Tag>
+     * @var ObjectStorage<Category>
      */
-    protected $technology;
-
-    /**
-     * industry
-     *
-     * @var ObjectStorage<Tag>
-     */
-    protected $industry;
-
-    /**
-     * target_group
-     *
-     * @var ObjectStorage<Tag>
-     */
-    protected $targetGroup;
+    protected $categories;
 
     /**
      * country
@@ -143,14 +129,16 @@ class Reference extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $duration;
 
     /**
-     * green_hosting
+     * greenHosting
      *
      * @var bool
      */
-    protected $green_hosting;
+    protected $greenHosting;
 
-
-
+    public function __construct()
+    {
+        $this->categories = new ObjectStorage();
+    }
 
 
     /**
@@ -280,87 +268,87 @@ class Reference extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the screenshot_smartphone
+     * Returns the screenshotSmartphone
      *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    public function getScreenshot_smartphone()
+    public function getScreenshotSmartphone()
     {
-        return $this->screenshot_smartphone;
+        return $this->screenshotSmartphone;
     }
 
     /**
-     * Sets the screenshot_smartphone
+     * Sets the screenshotSmartphone
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_smartphone
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshotSmartphone
      * @return void
      */
-    public function setScreenshot_smartphone(\TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_smartphone)
+    public function setScreenshotSmartphone(\TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshotSmartphone)
     {
-        $this->screenshot_smartphone = $screenshot_smartphone;
+        $this->screenshotSmartphone = $screenshotSmartphone;
     }
 
     /**
-     * Returns the screenshot_tablet
+     * Returns the screenshotTablet
      *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    public function getScreenshot_tablet()
+    public function getScreenshotTablet()
     {
-        return $this->screenshot_tablet;
+        return $this->screenshotTablet;
     }
 
     /**
-     * Sets the screenshot_tablet
+     * Sets the screenshotTablet
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_tablet
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshotTablet
      * @return void
      */
-    public function setScreenshot_tablet(\TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_tablet)
+    public function setScreenshotTablet(\TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshotTablet)
     {
-        $this->screenshot_tablet = $screenshot_tablet;
+        $this->screenshotTablet = $screenshotTablet;
     }
 
     /**
-     * Returns the screenshot_laptop
+     * Returns the screenshotLaptop
      *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    public function getScreenshot_laptop()
+    public function getScreenshotLaptop()
     {
-        return $this->screenshot_laptop;
+        return $this->screenshotLaptop;
     }
 
     /**
-     * Sets the screenshot_laptop
+     * Sets the screenshotLaptop
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_laptop
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshotLaptop
      * @return void
      */
-    public function setScreenshot_laptop(\TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_laptop)
+    public function setScreenshotLaptop(\TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshotLaptop)
     {
-        $this->screenshot_laptop = $screenshot_laptop;
+        $this->screenshotLaptop = $screenshotLaptop;
     }
 
     /**
-     * Returns the screenshot_desktop
+     * Returns the screenshotDesktop
      *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    public function getScreenshot_desktop()
+    public function getScreenshotDesktop()
     {
-        return $this->screenshot_desktop;
+        return $this->screenshotDesktop;
     }
 
     /**
-     * Sets the screenshot_desktop
+     * Sets the screenshotDesktop
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_desktop
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshotDesktop
      * @return void
      */
-    public function setScreenshot_desktop(\TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshot_desktop)
+    public function setScreenshotDesktop(\TYPO3\CMS\Extbase\Domain\Model\FileReference $screenshotDesktop)
     {
-        $this->screenshot_desktop = $screenshot_desktop;
+        $this->screenshotDesktop = $screenshotDesktop;
     }
 
     /**
@@ -429,64 +417,44 @@ class Reference extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the green_hosting
+     * Returns the greenHosting
      *
      * @return bool
      */
-    public function getGreen_hosting()
+    public function getGreenHosting()
     {
-        return $this->green_hosting;
+        return $this->greenHosting;
     }
 
     /**
-     * Sets the green_hosting
+     * Sets the greenHosting
      *
-     * @param bool $green_hosting
+     * @param bool $greenHosting
      * @return void
      */
-    public function setGreen_hosting(bool $green_hosting)
+    public function setGreenHosting(bool $greenHosting)
     {
-        $this->green_hosting = $green_hosting;
+        $this->greenHosting = $greenHosting;
     }
 
     /**
-     * Returns the boolean state of green_hosting
+     * Returns the boolean state of greenHosting
      *
      * @return bool
      */
-    public function isGreen_hosting()
+    public function isGreenHosting()
     {
-        return $this->green_hosting;
+        return $this->greenHosting;
     }
 
-    public function getTechnology(): ObjectStorage
+    public function getCategories(): ObjectStorage
     {
-        return $this->technology;
+        return $this->categories;
     }
 
-    public function setTechnology(ObjectStorage $technology): void
+    public function setCategories(ObjectStorage $categories): void
     {
-        $this->technology = $technology;
-    }
-
-    public function getIndustry(): ObjectStorage
-    {
-        return $this->industry;
-    }
-
-    public function setIndustry(ObjectStorage $industry): void
-    {
-        $this->industry = $industry;
-    }
-
-    public function getTargetGroup(): ?ObjectStorage
-    {
-        return $this->targetGroup;
-    }
-
-    public function setTargetGroup(ObjectStorage $targetGroup): void
-    {
-        $this->targetGroup = $targetGroup;
+        $this->categories = $categories;
     }
 
 

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:references/Resources/Private/Language/locallang.xlf" date="2024-09-16T16:03:02Z" product-name="references">
+		<header/>
+		<body>
+			<trans-unit id="reference_list.filter.country" resname="reference_list.filter.country">
+				<source>Country:</source>
+				<target>Land:</target>
+			</trans-unit>
+			<trans-unit id="reference_list.filter.pleaseChoose" resname="reference_list.filter.pleaseChoose">
+				<source>Please choose</source>
+				<target>Bitte wählen</target>
+			</trans-unit>
+			<trans-unit id="reference_list.filter.submit" resname="reference_list.filter.submit">
+				<source>Search</source>
+				<target>Suchen</target>
+			</trans-unit>
+			<trans-unit id="reference_list.filter.activeFilters" resname="reference_list.filter.activeFilters">
+				<source>Active filters:</source>
+				<target>Aktive Filter:</target>
+			</trans-unit>
+			<trans-unit id="reference_list.filter.resetAll" resname="reference_list.filter.resetAll">
+				<source>Reset all</source>
+				<target>Alle zurücksetzen</target>
+			</trans-unit>
+			<trans-unit id="reference_list.item.visitProject" resname="reference_list.item.visitProject">
+				<source>Visit project</source>
+				<target>Projekt besuchen</target>
+			</trans-unit>
+			<trans-unit id="reference_list.item.readMore" resname="reference_list.item.readMore">
+				<source>Read more</source>
+				<target>Mehr erfahren</target>
+			</trans-unit>
+			<trans-unit id="reference_list.pagination.label" resname="reference_list.pagination.label">
+				<source>Pagination</source>
+				<target>Seitennavigation</target>
+			</trans-unit>
+			<trans-unit id="reference_list.pagination.previous" resname="reference_list.pagination.previous">
+				<source>Previous page</source>
+				<target>Vorherige Seite</target>
+			</trans-unit>
+			<trans-unit id="reference_list.pagination.next" resname="reference_list.pagination.next">
+				<source>Next page</source>
+				<target>Nächste Seite</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

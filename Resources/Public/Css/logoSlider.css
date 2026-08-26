@@ -1,0 +1,76 @@
+/*
+ * Endless auto-scrolling logo strip. The reference list is rendered twice
+ * back to back and the track is animated exactly -50% (= one full list
+ * width) so the loop is seamless.
+ */
+.logo-slider {
+    overflow: hidden;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+}
+
+.logo-slider__track {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: max-content;
+    animation: logo-slider-scroll 100s linear infinite;
+}
+
+.logo-slider:hover .logo-slider__track {
+    animation-play-state: paused;
+}
+
+.logo-slider__item {
+    position: relative;
+    flex: 0 0 auto;
+    display: block;
+    padding: 10px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Name tooltip shown on hover, built from the item's own markup (no JS) */
+.logo-slider__item::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    background: #1c1c1e;
+    color: #fff;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    padding: 4px 10px;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 2;
+}
+
+.logo-slider__item:hover::after,
+.logo-slider__item:focus-visible::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+@keyframes logo-slider-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .logo-slider__track {
+        animation: none;
+    }
+}

@@ -108,6 +108,37 @@
 			<trans-unit id="tx_references_domain_model_reference.green_hosting.description" resname="tx_references_domain_model_reference.green_hosting.description">
 				<source>Green Hosting</source>
 			</trans-unit>
+
+			<trans-unit id="reference_list.filter.country" resname="reference_list.filter.country">
+				<source>Country:</source>
+			</trans-unit>
+			<trans-unit id="reference_list.filter.pleaseChoose" resname="reference_list.filter.pleaseChoose">
+				<source>Please choose</source>
+			</trans-unit>
+			<trans-unit id="reference_list.filter.submit" resname="reference_list.filter.submit">
+				<source>Search</source>
+			</trans-unit>
+			<trans-unit id="reference_list.filter.activeFilters" resname="reference_list.filter.activeFilters">
+				<source>Active filters:</source>
+			</trans-unit>
+			<trans-unit id="reference_list.filter.resetAll" resname="reference_list.filter.resetAll">
+				<source>Reset all</source>
+			</trans-unit>
+			<trans-unit id="reference_list.item.visitProject" resname="reference_list.item.visitProject">
+				<source>Visit project</source>
+			</trans-unit>
+			<trans-unit id="reference_list.item.readMore" resname="reference_list.item.readMore">
+				<source>Read more</source>
+			</trans-unit>
+			<trans-unit id="reference_list.pagination.label" resname="reference_list.pagination.label">
+				<source>Pagination</source>
+			</trans-unit>
+			<trans-unit id="reference_list.pagination.previous" resname="reference_list.pagination.previous">
+				<source>Previous page</source>
+			</trans-unit>
+			<trans-unit id="reference_list.pagination.next" resname="reference_list.pagination.next">
+				<source>Next page</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

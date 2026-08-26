@@ -1,36 +1,109 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:wsref="http://typo3.org/ns/wapplersystems/References/ViewHelpers" data-namespace-typo3-fluid="true">
 
-<div class="reference__item {wsref:tag(tags:reference.technology,classPrefix:'reference-tag--')} ">
+<div id="reference-{reference.uid}" class="reference__item d-flex flex-column flex-md-row-reverse align-items-start gap-4 {wsref:tag(tags:reference.categories,classPrefix:'reference-tag--')} ">
 
+    <f:if condition="{reference.screenshotDesktop} || {reference.screenshotLaptop} || {reference.screenshotTablet} || {reference.screenshotSmartphone}">
+        <f:variable name="galleryName" value="reference-{reference.uid}" />
 
-    <h2>{reference.name}</h2>
-    <p>{reference.teaser}</p>
-    {reference.description -> f:format.html()}
-    <a href="{reference.link}">Projekt besuchen:  </a>
+        <div class="reference__image flex-shrink-0">
+            <a href="#device-lightbox-combined-{reference.uid}" data-gallery="{galleryName}" class="lightbox">
+                <div class="device-showcase">
+                    <f:render partial="Reference/DeviceShowcaseScreens" arguments="{reference: reference, widthDesktop: 600, widthLaptop: 450, widthTablet: 250, widthPhone: 150, loading: loading}" />
+                </div>
+            </a>
 
+            <!-- Hidden gallery members so, after the combined view, next/prev cycles: phone -> tablet -> laptop -> desktop -->
+            <f:if condition="{reference.screenshotSmartphone}">
+                <a href="#device-lightbox-phone-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
+            </f:if>
+            <f:if condition="{reference.screenshotTablet}">
+                <a href="#device-lightbox-tablet-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
+            </f:if>
+            <f:if condition="{reference.screenshotLaptop}">
+                <a href="#device-lightbox-laptop-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
+            </f:if>
+            <f:if condition="{reference.screenshotDesktop}">
+                <a href="#device-lightbox-desktop-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
+            </f:if>
+        </div>
 
-    <f:if condition="{reference.logo}">
-        <f:image image="{reference.logo}" />
+        <div id="device-lightbox-combined-{reference.uid}" class="device-showcase-lightbox-inline" style="display:none;">
+            <div class="device-showcase device-showcase--large">
+                <f:render partial="Reference/DeviceShowcaseScreens" arguments="{reference: reference, widthDesktop: 1100, widthLaptop: 800, widthTablet: 340, widthPhone: 200, loading: 'lazy'}" />
+            </div>
+        </div>
+
+        <f:if condition="{reference.screenshotSmartphone}">
+            <div id="device-lightbox-phone-{reference.uid}" class="device-showcase-lightbox-inline" style="display:none;">
+                <div class="device-showcase device-showcase--solo device-showcase--solo-phone">
+                    <f:render partial="Reference/Device/Phone" arguments="{reference: reference, width: 520, loading: 'lazy'}" />
+                </div>
+            </div>
+        </f:if>
+        <f:if condition="{reference.screenshotTablet}">
+            <div id="device-lightbox-tablet-{reference.uid}" class="device-showcase-lightbox-inline" style="display:none;">
+                <div class="device-showcase device-showcase--solo device-showcase--solo-tablet">
+                    <f:render partial="Reference/Device/Tablet" arguments="{reference: reference, width: 820, loading: 'lazy'}" />
+                </div>
+            </div>
+        </f:if>
+        <f:if condition="{reference.screenshotLaptop}">
+            <div id="device-lightbox-laptop-{reference.uid}" class="device-showcase-lightbox-inline" style="display:none;">
+                <div class="device-showcase device-showcase--solo device-showcase--solo-laptop">
+                    <f:render partial="Reference/Device/Laptop" arguments="{reference: reference, width: 800, loading: 'lazy'}" />
+                </div>
+            </div>
+        </f:if>
+        <f:if condition="{reference.screenshotDesktop}">
+            <div id="device-lightbox-desktop-{reference.uid}" class="device-showcase-lightbox-inline" style="display:none;">
+                <div class="device-showcase device-showcase--solo device-showcase--solo-desktop">
+                    <f:render partial="Reference/Device/Desktop" arguments="{reference: reference, width: 1000, loading: 'lazy'}" />
+                </div>
+            </div>
+        </f:if>
     </f:if>
 
-    <p>Technologien:
-        <f:for each="{reference.technology}" as="technology">
-            <span>{technology.title}</span>
-        </f:for>
-    </p>
+    <div class="reference__content flex-grow-1">
 
-    <p>Industry:
-        <f:for each="{reference.industry}" as="industry">
-            <span>{industry.title}</span>
-        </f:for>
-    </p>
-    <p>Target Group:
-        <f:for each="{reference.targetGroup}" as="targetGroup">
-            <span>{targetGroup.title}</span>
-        </f:for>
-    </p>
-    <hr>
+        <h2>{reference.name}</h2>
 
+        <f:if condition="{reference.teaser}">
+            <p class="reference__teaser">{reference.teaser}</p>
+        </f:if>
+
+        <f:if condition="{reference.categories} || {reference.country} || {reference.greenHosting}">
+            <div class="reference__tags">
+                <f:for each="{reference.categories}" as="category">
+                    <span class="reference__tag">{category.title}</span>
+                </f:for>
+                <f:if condition="{reference.country}">
+                    <f:for each="{countryFilterOptions}" as="countryOption">
+                        <f:if condition="{countryOption.uid} == {reference.country}">
+                            <span class="reference__tag">{countryOption.cn_short_en}</span>
+                        </f:if>
+                    </f:for>
+                </f:if>
+                <f:if condition="{reference.greenHosting}">
+                    <span class="reference__tag reference__tag--eco">&#127793; <f:translate key="LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.green_hosting" /></span>
+                </f:if>
+            </div>
+        </f:if>
+
+        <f:render partial="Reference/LogoBox" arguments="{reference: reference}" />
+
+        <div class="reference__footer">
+            <f:if condition="{reference.link}">
+                <a class="reference__link no-icon" href="{reference.link}" target="_blank" rel="noreferrer"><f:translate key="reference_list.item.visitProject" /></a>
+            </f:if>
+            <f:if condition="{reference.description}">
+                <details class="reference__details">
+                    <summary><f:translate key="reference_list.item.readMore" /></summary>
+                    <div class="reference__description">{reference.description -> f:format.html()}</div>
+                </details>
+            </f:if>
+        </div>
+
+    </div>
 
 </div>
 

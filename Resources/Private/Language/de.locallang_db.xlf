@@ -79,34 +79,6 @@
 			<trans-unit id="tx_references_domain_model_reference.video.description" resname="tx_references_domain_model_reference.video.description">
 				<source>Video</source>
 			</trans-unit>
-			<trans-unit id="tx_references_domain_model_reference.technology" resname="tx_references_domain_model_reference.technology">
-				<source>Technology</source>
-				<target>verwendete Technik</target>
-			</trans-unit>
-			<trans-unit id="tx_references_domain_model_reference.technology.description" resname="tx_references_domain_model_reference.technology.description">
-				<source>Technology</source>
-			</trans-unit>
-			<trans-unit id="tx_references_domain_model_reference.industry" resname="tx_references_domain_model_reference.industry">
-				<source>Industry</source>
-				<target>Branche</target>
-			</trans-unit>
-			<trans-unit id="tx_references_domain_model_reference.industry.description" resname="tx_references_domain_model_reference.industry.description">
-				<source>Industry</source>
-			</trans-unit>
-			<trans-unit id="tx_references_domain_model_reference.target_group" resname="tx_references_domain_model_reference.target_group">
-				<source>Target Group</source>
-				<target>Zielgruppe</target>
-			</trans-unit>
-			<trans-unit id="tx_references_domain_model_reference.target_group.description" resname="tx_references_domain_model_reference.target_group.description">
-				<source>Target Group</source>
-			</trans-unit>
-			<trans-unit id="tx_references_domain_model_reference.task" resname="tx_references_domain_model_reference.task">
-				<source>Task</source>
-				<target>Tätigkeit</target>
-			</trans-unit>
-			<trans-unit id="tx_references_domain_model_reference.task.description" resname="tx_references_domain_model_reference.task.description">
-				<source>Task</source>
-			</trans-unit>
 			<trans-unit id="tx_references_domain_model_reference.country" resname="tx_references_domain_model_reference.country">
 				<source>Country</source>
 				<target>Land</target>
@@ -123,17 +95,29 @@
 			</trans-unit>
 			<trans-unit id="tx_references_domain_model_reference.green_hosting" resname="tx_references_domain_model_reference.green_hosting">
 				<source>Green Hosting</source>
-				<target>Hosting mit regenativer Energie</target>
+				<target>Hosting mit regenerativer Energie</target>
 			</trans-unit>
 			<trans-unit id="tx_references_domain_model_reference.green_hosting.description" resname="tx_references_domain_model_reference.green_hosting.description">
 				<source>Green Hosting</source>
-				<target>Hosting mit regenativer Energie</target>
+				<target>Hosting mit regenerativer Energie</target>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.categories" resname="tx_references_domain_model_reference.categories">
+				<source>Categories</source>
+				<target>Kategorien</target>
 			</trans-unit>
 			<trans-unit id="tx_references_list.name" resname="tx_references_list.name">
 				<source>List</source>
 			</trans-unit>
 			<trans-unit id="tx_references_list.description" resname="tx_references_list.description">
 				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_references_logoslider.name" resname="tx_references_logoslider.name">
+				<source>Logo Slider</source>
+				<target>Logo-Slider</target>
+			</trans-unit>
+			<trans-unit id="tx_references_logoslider.description" resname="tx_references_logoslider.description">
+				<source>Endless scrolling strip of reference logos</source>
+				<target>Endlos scrollendes Band mit Referenz-Logos</target>
 			</trans-unit>
 			<trans-unit id="tab.media">
 				<source>Media</source>

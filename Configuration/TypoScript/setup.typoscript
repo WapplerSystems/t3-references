@@ -1,3 +1,8 @@
+page.includeCSS {
+  referencesDeviceShowcase = EXT:references/Resources/Public/Css/devices.css
+  referencesLogoSlider = EXT:references/Resources/Public/Css/logoSlider.css
+}
+
 plugin.tx_references {
   view {
     templateRootPaths.0 = EXT:references/Resources/Private/Templates/
@@ -24,6 +29,6 @@ plugin.tx_references {
   }
 
   settings {
-    technologyTagsPageId = {$plugin.tx_references.settings.technologyTagsPageId}
+    listPageId = {$plugin.tx_references.settings.listPageId}
   }
 }

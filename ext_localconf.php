@@ -9,7 +9,19 @@ defined('TYPO3') || die();
             \wapplersystems\References\Controller\ReferenceController::class => 'list'
         ],
         [
-            \wapplersystems\References\Controller\ReferenceController::class => ''
+            \wapplersystems\References\Controller\ReferenceController::class => 'list'
+        ],
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+    );
+
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'References',
+        'LogoSlider',
+        [
+            \wapplersystems\References\Controller\ReferenceController::class => 'logoSlider'
+        ],
+        [
+            \wapplersystems\References\Controller\ReferenceController::class => 'logoSlider'
         ],
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
@@ -27,6 +39,14 @@ defined('TYPO3') || die();
                         description = LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_list.description
                         tt_content_defValues {
                             CType = references_list
+                        }
+                    }
+                    logoslider {
+                        iconIdentifier = references-plugin-logoslider
+                        title = LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_logoslider.name
+                        description = LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_logoslider.description
+                        tt_content_defValues {
+                            CType = references_logoslider
                         }
                     }
                 }

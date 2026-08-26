@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:wsref="http://typo3.org/ns/wapplersystems/References/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:if condition="{reference.logo} && {wsref:fileExists(file: reference.logo)}">
+    <f:variable name="logoNeedsDarkBg" value="{wsref:logoNeedsDarkBackground(file: reference.logo)}" />
+    <f:if condition="{logoNeedsDarkBg}">
+        <f:then>
+            <span class="reference__logo reference__logo--dark">
+                <f:image image="{reference.logo}" width="160" alt="{reference.name}" />
+            </span>
+        </f:then>
+        <f:else>
+            <span class="reference__logo">
+                <f:image image="{reference.logo}" width="160" alt="{reference.name}" />
+            </span>
+        </f:else>
+    </f:if>
+</f:if>
+
+</html>
