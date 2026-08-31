@@ -2,27 +2,57 @@
 
 <div id="reference-{reference.uid}" class="reference__item d-flex flex-column flex-md-row-reverse align-items-start gap-4 {wsref:tag(tags:reference.categories,classPrefix:'reference-tag--')} ">
 
+
     <f:if condition="{reference.screenshotDesktop} || {reference.screenshotLaptop} || {reference.screenshotTablet} || {reference.screenshotSmartphone}">
         <f:variable name="galleryName" value="reference-{reference.uid}" />
 
         <div class="reference__image flex-shrink-0">
-            <a href="#device-lightbox-combined-{reference.uid}" data-gallery="{galleryName}" class="lightbox">
-                <div class="device-showcase">
-                    <f:render partial="Reference/DeviceShowcaseScreens" arguments="{reference: reference, widthDesktop: 600, widthLaptop: 450, widthTablet: 250, widthPhone: 150, loading: loading}" />
-                </div>
+            <f:if condition="{reference.screenshotDesktop} && {reference.screenshotLaptop} && {reference.screenshotTablet} && {reference.screenshotSmartphone}">
+                <f:then>
+                    <f:variable name="previewDevice" value="combined" />
+                </f:then>
+                <f:else>
+                    <f:if condition="{reference.screenshotDesktop}">
+                        <f:then>
+                            <f:variable name="previewDevice" value="desktop" />
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{reference.screenshotLaptop}">
+                                <f:then>
+                                    <f:variable name="previewDevice" value="laptop" />
+                                </f:then>
+                                <f:else>
+                                    <f:if condition="{reference.screenshotTablet}">
+                                        <f:then>
+                                            <f:variable name="previewDevice" value="tablet" />
+                                        </f:then>
+                                        <f:else>
+                                            <f:variable name="previewDevice" value="phone" />
+                                        </f:else>
+                                    </f:if>
+                                </f:else>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+                </f:else>
+            </f:if>
+            <a href="#device-lightbox-{previewDevice}-{reference.uid}" data-gallery="{galleryName}" class="lightbox">
+                <f:render partial="Reference/DeviceShowcasePreview" arguments="{reference: reference, widthDesktop: 600, widthLaptop: 450, widthTablet: 250, widthPhone: 150, loading: loading}" />
             </a>
 
-            <!-- Hidden gallery members so, after the combined view, next/prev cycles: phone -> tablet -> laptop -> desktop -->
-            <f:if condition="{reference.screenshotSmartphone}">
+            <!-- Hidden gallery members so, after the visible preview, next/prev cycles through the remaining devices:
+                 phone -> tablet -> laptop -> desktop. Whichever device is already the visible preview link above
+                 is skipped here, otherwise it would appear twice in the same GLightbox gallery group. -->
+            <f:if condition="{reference.screenshotSmartphone} && {previewDevice} != 'phone'">
                 <a href="#device-lightbox-phone-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
             </f:if>
-            <f:if condition="{reference.screenshotTablet}">
+            <f:if condition="{reference.screenshotTablet} && {previewDevice} != 'tablet'">
                 <a href="#device-lightbox-tablet-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
             </f:if>
-            <f:if condition="{reference.screenshotLaptop}">
+            <f:if condition="{reference.screenshotLaptop} && {previewDevice} != 'laptop'">
                 <a href="#device-lightbox-laptop-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
             </f:if>
-            <f:if condition="{reference.screenshotDesktop}">
+            <f:if condition="{reference.screenshotDesktop} && {previewDevice} != 'desktop'">
                 <a href="#device-lightbox-desktop-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
             </f:if>
         </div>

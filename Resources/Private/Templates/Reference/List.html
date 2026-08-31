@@ -18,12 +18,14 @@
             </div>
         </f:for>
 
-        <div class="reference-filter-field d-flex align-items-center gap-2">
-            <label for="country-select" class="form-label mb-0 text-nowrap"><f:translate key="reference_list.filter.country" /></label>
-            <f:form.select id="country-select" name="country" class="form-select"
-                            options="{countryFilterOptions}" optionValueField="uid" optionLabelField="cn_short_en"
-                            value="{selectedCountry}" prependOptionLabel="{f:translate(key: 'reference_list.filter.pleaseChoose')}" prependOptionValue="" />
-        </div>
+        <f:if condition="{countryFilterOptions}">
+            <div class="reference-filter-field d-flex align-items-center gap-2">
+                <label for="country-select" class="form-label mb-0 text-nowrap"><f:translate key="reference_list.filter.country" /></label>
+                <f:form.select id="country-select" name="country" class="form-select"
+                                options="{countryFilterOptions}" optionValueField="uid" optionLabelField="cn_short_en"
+                                value="{selectedCountry}" prependOptionLabel="{f:translate(key: 'reference_list.filter.pleaseChoose')}" prependOptionValue="" />
+            </div>
+        </f:if>
 
         <button type="submit" class="reference__filter-submit"><f:translate key="reference_list.filter.submit" /></button>
     </f:form>
