@@ -6,8 +6,8 @@ namespace wapplersystems\References\Domain\Model;
 
 use TYPO3\CMS\Extbase\Attribute\ORM\Cascade;
 use TYPO3\CMS\Extbase\Attribute\Validate;
+use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
-use TYPO3\CMS\Extbase\Domain\Model\Tag;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -29,46 +29,34 @@ class Reference extends AbstractEntity
     protected ?FileReference $logo = null;
 
     #[Cascade('remove')]
-    protected ?FileReference $screenshot_smartphone = null;
+    protected ?FileReference $screenshotSmartphone = null;
 
     #[Cascade('remove')]
-    protected ?FileReference $screenshot_tablet = null;
+    protected ?FileReference $screenshotTablet = null;
 
     #[Cascade('remove')]
-    protected ?FileReference $screenshot_laptop = null;
+    protected ?FileReference $screenshotLaptop = null;
 
     #[Cascade('remove')]
-    protected ?FileReference $screenshot_desktop = null;
+    protected ?FileReference $screenshotDesktop = null;
 
     #[Cascade('remove')]
     protected ?FileReference $video = null;
 
     /**
-     * @var ObjectStorage<Tag>
+     * @var ObjectStorage<Category>
      */
-    protected ObjectStorage $technology;
-
-    /**
-     * @var ObjectStorage<Tag>
-     */
-    protected ObjectStorage $industry;
-
-    /**
-     * @var ObjectStorage<Tag>|null
-     */
-    protected ?ObjectStorage $targetGroup = null;
+    protected ObjectStorage $categories;
 
     protected int $country = 0;
 
     protected string $duration = '';
 
-    protected bool $green_hosting = false;
+    protected bool $greenHosting = false;
 
     public function __construct()
     {
-        $this->technology = new ObjectStorage();
-        $this->industry = new ObjectStorage();
-        $this->targetGroup = new ObjectStorage();
+        $this->categories = new ObjectStorage();
     }
 
     public function getName(): string
@@ -133,42 +121,42 @@ class Reference extends AbstractEntity
 
     public function getScreenshotSmartphone(): ?FileReference
     {
-        return $this->screenshot_smartphone;
+        return $this->screenshotSmartphone;
     }
 
-    public function setScreenshotSmartphone(FileReference $screenshot_smartphone): void
+    public function setScreenshotSmartphone(FileReference $screenshotSmartphone): void
     {
-        $this->screenshot_smartphone = $screenshot_smartphone;
+        $this->screenshotSmartphone = $screenshotSmartphone;
     }
 
     public function getScreenshotTablet(): ?FileReference
     {
-        return $this->screenshot_tablet;
+        return $this->screenshotTablet;
     }
 
-    public function setScreenshotTablet(FileReference $screenshot_tablet): void
+    public function setScreenshotTablet(FileReference $screenshotTablet): void
     {
-        $this->screenshot_tablet = $screenshot_tablet;
+        $this->screenshotTablet = $screenshotTablet;
     }
 
     public function getScreenshotLaptop(): ?FileReference
     {
-        return $this->screenshot_laptop;
+        return $this->screenshotLaptop;
     }
 
-    public function setScreenshotLaptop(FileReference $screenshot_laptop): void
+    public function setScreenshotLaptop(FileReference $screenshotLaptop): void
     {
-        $this->screenshot_laptop = $screenshot_laptop;
+        $this->screenshotLaptop = $screenshotLaptop;
     }
 
     public function getScreenshotDesktop(): ?FileReference
     {
-        return $this->screenshot_desktop;
+        return $this->screenshotDesktop;
     }
 
-    public function setScreenshotDesktop(FileReference $screenshot_desktop): void
+    public function setScreenshotDesktop(FileReference $screenshotDesktop): void
     {
-        $this->screenshot_desktop = $screenshot_desktop;
+        $this->screenshotDesktop = $screenshotDesktop;
     }
 
     public function getVideo(): ?FileReference
@@ -203,46 +191,26 @@ class Reference extends AbstractEntity
 
     public function getGreenHosting(): bool
     {
-        return $this->green_hosting;
+        return $this->greenHosting;
     }
 
-    public function setGreenHosting(bool $green_hosting): void
+    public function setGreenHosting(bool $greenHosting): void
     {
-        $this->green_hosting = $green_hosting;
+        $this->greenHosting = $greenHosting;
     }
 
     public function isGreenHosting(): bool
     {
-        return $this->green_hosting;
+        return $this->greenHosting;
     }
 
-    public function getTechnology(): ObjectStorage
+    public function getCategories(): ObjectStorage
     {
-        return $this->technology;
+        return $this->categories;
     }
 
-    public function setTechnology(ObjectStorage $technology): void
+    public function setCategories(ObjectStorage $categories): void
     {
-        $this->technology = $technology;
-    }
-
-    public function getIndustry(): ObjectStorage
-    {
-        return $this->industry;
-    }
-
-    public function setIndustry(ObjectStorage $industry): void
-    {
-        $this->industry = $industry;
-    }
-
-    public function getTargetGroup(): ?ObjectStorage
-    {
-        return $this->targetGroup;
-    }
-
-    public function setTargetGroup(ObjectStorage $targetGroup): void
-    {
-        $this->targetGroup = $targetGroup;
+        $this->categories = $categories;
     }
 }

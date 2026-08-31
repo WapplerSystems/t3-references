@@ -19,10 +19,10 @@ class TagViewHelper extends AbstractViewHelper
         $tags = $this->arguments['tags'];
         $classPrefix = $this->arguments['classPrefix'] ?? '';
 
-        $tagString = '';
+        $classNames = [];
         foreach ($tags as $tag) {
-            $tagString .= $classPrefix . $tag->getUid() . ' ';
+            $classNames[] = htmlspecialchars($classPrefix . $tag->getUid());
         }
-        return $tagString;
+        return implode(' ', $classNames);
     }
 }

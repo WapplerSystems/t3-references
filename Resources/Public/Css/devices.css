@@ -1,0 +1,589 @@
+/*
+ * Staggered multi-device showcase (desktop / laptop / tablet / smartphone)
+ * for the References list, modelled after the "responsive mockup" layout
+ * in test.png. No bitmap frame assets are used — device bezels are built
+ * with pure CSS (dark frame, rounded corners, webcam dot / notch / base).
+ */
+/* Filter bar: white card holding the four label+select pairs and the
+   submit button, matching the references list redesign. */
+.reference__filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    background: #fff;
+    border: 1px solid #e5e5e7;
+    border-radius: 12px;
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 2.5rem;
+}
+
+/* t3bootstrap's global `div[class*="col-"] { flex-direction: column }` rule
+   ties with .d-flex on specificity when a grid column class is present, so
+   force the row explicitly regardless. */
+.reference-filter-field {
+    flex-direction: row !important;
+}
+
+.reference-filter-field label {
+    font-size: 0.85rem;
+    color: #6b6b70;
+    white-space: nowrap;
+}
+
+.reference-filter-field .form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #f0f0f1;
+    border: 1px solid #e5e5e7;
+    color: #1c1c1e;
+    border-radius: 7px;
+    padding: 0.45rem 1.9rem 0.45rem 0.7rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    min-width: 160px;
+    background-image: linear-gradient(45deg, transparent 50%, #6b6b70 50%), linear-gradient(135deg, #6b6b70 50%, transparent 50%);
+    background-position: calc(100% - 14px) center, calc(100% - 9px) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+}
+
+.reference-filter-field .form-select:focus {
+    background-color: #f0f0f1;
+    border-color: #F29100;
+    box-shadow: none;
+}
+
+/* Active filter chips: which filters are currently applied, each one a
+   link that removes just that filter (keeping the others). */
+.reference__active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin: -1.25rem 0 2.5rem;
+}
+
+.reference__active-filters-label {
+    font-size: 0.85rem;
+    color: #6b6b70;
+    margin-right: 0.25rem;
+}
+
+.reference__filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #fdf0dc;
+    color: #a3620a;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+}
+
+.reference__filter-chip span {
+    font-weight: 700;
+}
+
+.reference__filter-chip--clear {
+    background: none;
+    color: #6b6b70;
+    text-decoration: underline;
+}
+
+.reference__pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-top: 2rem;
+}
+
+.reference__pagination-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.2rem;
+    height: 2.2rem;
+    padding: 0 0.5rem;
+    border-radius: 999px;
+    background: #f0f0f1;
+    color: #1c1c1e;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.reference__pagination-link--current {
+    background: #F29100;
+    color: #1c1408;
+}
+
+.reference__filter-submit {
+    margin-left: auto;
+    background: #F29100;
+    color: #1c1408;
+    border: none;
+    border-radius: 7px;
+    padding: 0.55rem 1.3rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* White lightbox backdrop for reference device popups only — other
+   GLightbox galleries on the site keep the default dark overlay. */
+.glightbox-container:has(.device-showcase-lightbox-inline) .goverlay {
+    background: #fff;
+}
+
+/* The card's default dark drop-shadow reads as a visible gray border
+   against the white backdrop above — remove it for reference popups. */
+.glightbox-container:has(.device-showcase-lightbox-inline) .gslide-inline {
+    box-shadow: none;
+}
+
+/* List redesign: big image, condensed text, description tucked into a
+   dropdown so the list stays scannable. */
+.reference__item {
+    padding: 2.75rem 0;
+    border-bottom: 1px solid #e5e5e7;
+}
+
+.reference__item:first-of-type {
+    padding-top: 0;
+}
+
+.reference__image {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .reference__image {
+        flex: 0 0 56%;
+        max-width: 56%;
+    }
+
+    .reference__content {
+        min-width: 0;
+    }
+}
+
+.reference__eyebrow {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #a3620a;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+
+.reference__content h2 {
+    margin: 0 0 0.6rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.reference__teaser {
+    margin: 0 0 0.9rem;
+    color: #6b6b70;
+    max-width: 48ch;
+}
+
+.reference__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.reference__tag {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    background: #f0f0f1;
+    color: #48484a;
+    padding: 0.22rem 0.55rem;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.reference__tag--eco {
+    background: #e6f4ea;
+    color: #1e7a34;
+}
+
+.reference__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.reference__link {
+    color: #a3620a;
+    background: #fdf0dc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 650;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+}
+
+.reference__link::after {
+    content: "\2197";
+}
+
+.reference__details {
+    display: inline-block;
+}
+
+.reference__details summary {
+    cursor: pointer;
+    list-style: none;
+    color: #1c1c1e;
+    background: #f0f0f1;
+    border: 1px solid #e5e5e7;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 650;
+}
+
+.reference__details summary::-webkit-details-marker {
+    display: none;
+}
+
+.reference__details summary::after {
+    content: "\2193";
+    font-size: 0.75rem;
+    transition: transform 0.15s ease;
+}
+
+.reference__details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reference__details summary::after {
+        transition: none;
+    }
+}
+
+.reference__description {
+    margin-top: 0.9rem;
+    padding: 0.9rem 1.1rem;
+    background: #f7f7f8;
+    border: 1px solid #e5e5e7;
+    border-radius: 10px;
+    color: #6b6b70;
+    max-width: 60ch;
+}
+
+.reference__description :last-child {
+    margin-bottom: 0;
+}
+
+.reference__description ul {
+    padding-left: 1.1rem;
+}
+
+/* Normalize varying logo aspect ratios to one consistent visual size.
+   Fixed pixel box + object-fit — SVGs without an intrinsic width/height
+   collapse to 0x0 under width/height:auto, so the box size must be explicit. */
+.reference__logo {
+    display: inline-block;
+    width: 160px;
+    height: 40px;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+}
+
+.reference__logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left center;
+}
+
+/* Some uploaded logos use white fill colors (meant for a dark background)
+   and are invisible on this page's white background — auto-detected via
+   wsref:logoNeedsDarkBackground. */
+.reference__logo--dark {
+    background: #1c1c1e;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+.device-showcase {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 4 / 3;
+    margin: 0 auto;
+}
+
+/* Single enlarged device shown inside the GLightbox popup (phone/tablet/laptop/desktop, one at a time) */
+.device-showcase-lightbox-inline {
+    padding: 1.25rem;
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.device-showcase--large {
+    max-width: 560px;
+}
+
+.device-showcase--solo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: auto;
+    margin: 0 auto;
+}
+
+.device-showcase--solo .device-showcase__screen {
+    position: static;
+    width: 100%;
+}
+
+.device-showcase--solo-phone {
+    max-width: 200px;
+}
+
+.device-showcase--solo-tablet {
+    max-width: 320px;
+}
+
+.device-showcase--solo-laptop {
+    max-width: 620px;
+}
+
+.device-showcase--solo-desktop {
+    max-width: 700px;
+}
+
+.device-showcase__screen {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    background: #1c1c1e;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.device-showcase__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+.device-showcase__inner img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Phone screenshot is narrower than the cropped box — shift the crop
+   window to the left so the logo in the site header stays visible. */
+.device-showcase__phone .device-showcase__inner img {
+    object-position: left center;
+}
+
+/* Tablet: show the uploaded image in full (no cropping) — it's landscape,
+   the frame is portrait, so this letterboxes top/bottom instead of cutting
+   the sides off. */
+.device-showcase__tablet .device-showcase__inner img {
+    object-fit: contain;
+}
+
+/* Desktop monitor: iMac-style black bezel + neck + foot, like test.png */
+.device-showcase__desktop {
+    top: 0;
+    left: 0;
+    width: 66%;
+    aspect-ratio: 16 / 10;
+    z-index: 1;
+    border-radius: 1.8% / 2.4%;
+    padding: 1.1%;
+}
+
+.device-showcase__desktop .device-showcase__inner {
+    border-radius: 0.6% / 0.8%;
+}
+
+.device-showcase__desktop::before {
+    content: "";
+    position: absolute;
+    top: 0.9%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1.4%;
+    aspect-ratio: 1 / 1;
+    background: #48484a;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.device-showcase__desktop-neck {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6%;
+    height: 5%;
+    background: linear-gradient(to bottom, #2c2c2e, #1c1c1e);
+}
+
+.device-showcase__desktop-base {
+    position: absolute;
+    top: 105%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32%;
+    height: 3%;
+    background: linear-gradient(to bottom, #2c2c2e, #17171a);
+    border-radius: 999px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Laptop: thin screen bezel + protruding keyboard base */
+.device-showcase__laptop {
+    top: 30%;
+    right: 0;
+    width: 48%;
+    aspect-ratio: 16 / 10;
+    z-index: 2;
+    border-radius: 2.4% / 3%;
+    padding: 0.9%;
+}
+
+.device-showcase__laptop .device-showcase__inner {
+    border-radius: 1.2% / 1.8%;
+}
+
+.device-showcase__laptop::after {
+    content: "";
+    position: absolute;
+    left: -5%;
+    right: -5%;
+    bottom: -5%;
+    height: 5%;
+    background: #2c2c2e;
+    border-radius: 0 0 4px 4px;
+}
+
+/* Tablet: iPad-style bezel + camera dot, like test.png */
+.device-showcase__tablet {
+    bottom: 8%;
+    left: 4%;
+    width: 26%;
+    aspect-ratio: 3 / 4;
+    z-index: 3;
+    border-radius: 6% / 4.5%;
+    padding: 3%;
+}
+
+.device-showcase__tablet .device-showcase__inner {
+    border-radius: 2% / 1.5%;
+    background: #fff;
+}
+
+.device-showcase__tablet::before {
+    content: "";
+    position: absolute;
+    top: 1.4%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2%;
+    aspect-ratio: 1 / 1;
+    background: #48484a;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* Smartphone: edge-to-edge screen with a notch cut into it, like test.png */
+.device-showcase__phone {
+    bottom: 4%;
+    left: 22%;
+    width: 16%;
+    aspect-ratio: 9 / 19;
+    z-index: 4;
+    border-radius: 14% / 6%;
+    padding: 1% 0.8%;
+}
+
+.device-showcase__phone .device-showcase__inner {
+    border-radius: 12% / 5%;
+}
+
+.device-showcase__phone-notch {
+    position: absolute;
+    top: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 38%;
+    height: 2.6%;
+    background: #1c1c1e;
+    border-radius: 0 0 6px 6px;
+    z-index: 2;
+}
+
+.device-showcase__phone::before {
+    content: "";
+    position: absolute;
+    right: -3px;
+    top: 24%;
+    width: 3px;
+    height: 12%;
+    background: #1c1c1e;
+    border-radius: 0 2px 2px 0;
+}
+
+.device-showcase__phone::after {
+    content: "";
+    position: absolute;
+    left: -3px;
+    top: 16%;
+    width: 3px;
+    height: 18%;
+    background: #1c1c1e;
+    border-radius: 2px 0 0 2px;
+}
+
+/* Below ~576px the overlap gets too cramped — fall back to stacked cards */
+@media (max-width: 575.98px) {
+    .device-showcase {
+        max-width: 100%;
+        aspect-ratio: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .device-showcase__screen {
+        position: static;
+        width: 100% !important;
+        aspect-ratio: 16 / 10;
+    }
+
+    .device-showcase__phone {
+        aspect-ratio: 9 / 19;
+        max-width: 220px;
+        margin: 0 auto;
+    }
+}

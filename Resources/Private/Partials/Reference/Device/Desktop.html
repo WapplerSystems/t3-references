@@ -1,0 +1,13 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:if condition="{reference.screenshotDesktop}">
+    <div class="device-showcase__screen device-showcase__desktop">
+        <div class="device-showcase__desktop-neck"></div>
+        <div class="device-showcase__desktop-base"></div>
+        <div class="device-showcase__inner">
+            <f:image image="{reference.screenshotDesktop}" width="{width}" alt="{reference.name}" loading="{loading}" />
+        </div>
+    </div>
+</f:if>
+
+</html>

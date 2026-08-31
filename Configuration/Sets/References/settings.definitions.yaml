@@ -1,0 +1,11 @@
+categories:
+  references:
+    label: 'References'
+
+settings:
+  plugin.tx_references.persistence.storagePid:
+    label: 'References: Storage page'
+    description: 'Page (sysfolder) uid where the reference records are stored.'
+    type: int
+    default: 0
+    category: references

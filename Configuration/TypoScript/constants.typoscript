@@ -14,7 +14,7 @@ plugin.tx_references {
   }
 
   settings {
-    # cat=plugin.tx_references//b; type=string; label=Technology tags page ID
-    technologyTagsPageId =
+    # cat=plugin.tx_references//c; type=string; label=Page ID of the references list (used by the logo slider to link back to the matching reference)
+    listPageId =
   }
 }

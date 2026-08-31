@@ -16,3 +16,15 @@ ExtensionUtility::configurePlugin(
     ],
     ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
+
+ExtensionUtility::configurePlugin(
+    'References',
+    'LogoSlider',
+    [
+        ReferenceController::class => 'logoSlider',
+    ],
+    [
+        ReferenceController::class => '',
+    ],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+);

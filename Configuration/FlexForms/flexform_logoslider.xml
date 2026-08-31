@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <sheetTitle>Plugin Options</sheetTitle>
+                <type>array</type>
+                <el>
+                    <settings.listPageId>
+                        <label>LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_logoslider.listPageId</label>
+                        <config>
+                            <type>group</type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <minitems>0</minitems>
+                            <maxitems>1</maxitems>
+                        </config>
+                    </settings.listPageId>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

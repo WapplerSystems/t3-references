@@ -1,0 +1,30 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:wsref="http://typo3.org/ns/wapplersystems/References/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+
+    <f:flashMessages/>
+
+    <f:if condition="{references}">
+        <div class="logo-slider">
+            <div class="logo-slider__track">
+                <f:for each="{references}" as="reference">
+                    <f:if condition="{reference.logo} && {wsref:fileExists(file: reference.logo)}">
+                        <a href="{f:uri.page(pageUid: listPageId, section: 'reference-{reference.uid}')}" class="logo-slider__item" data-name="{reference.name}">
+                            <f:render partial="Reference/LogoBox" arguments="{reference: reference}" />
+                        </a>
+                    </f:if>
+                </f:for>
+                <f:for each="{references}" as="reference">
+                    <f:if condition="{reference.logo} && {wsref:fileExists(file: reference.logo)}">
+                        <a href="{f:uri.page(pageUid: listPageId, section: 'reference-{reference.uid}')}" class="logo-slider__item" data-name="{reference.name}" tabindex="-1" aria-hidden="true">
+                            <f:render partial="Reference/LogoBox" arguments="{reference: reference}" />
+                        </a>
+                    </f:if>
+                </f:for>
+            </div>
+        </div>
+    </f:if>
+
+</f:section>
+</html>

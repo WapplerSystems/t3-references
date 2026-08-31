@@ -11,6 +11,14 @@ mod {
                     CType = references_list
                 }
             }
+            logoslider {
+                iconIdentifier = references-plugin-logoslider
+                title = LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_logoslider.name
+                description = LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_logoslider.description
+                tt_content_defValues {
+                    CType = references_logoslider
+                }
+            }
         }
         show = *
     }

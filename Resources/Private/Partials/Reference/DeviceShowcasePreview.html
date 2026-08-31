@@ -1,0 +1,43 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:if condition="{reference.screenshotDesktop} && {reference.screenshotLaptop} && {reference.screenshotTablet} && {reference.screenshotSmartphone}">
+    <f:then>
+        <div class="device-showcase">
+            <f:render partial="Reference/DeviceShowcaseScreens" arguments="{reference: reference, widthDesktop: widthDesktop, widthLaptop: widthLaptop, widthTablet: widthTablet, widthPhone: widthPhone, loading: loading}" />
+        </div>
+    </f:then>
+    <f:else>
+        <f:if condition="{reference.screenshotDesktop}">
+            <f:then>
+                <div class="device-showcase device-showcase--solo device-showcase--solo-desktop">
+                    <f:render partial="Reference/Device/Desktop" arguments="{reference: reference, width: 700, loading: loading}" />
+                </div>
+            </f:then>
+            <f:else>
+                <f:if condition="{reference.screenshotLaptop}">
+                    <f:then>
+                        <div class="device-showcase device-showcase--solo device-showcase--solo-laptop">
+                            <f:render partial="Reference/Device/Laptop" arguments="{reference: reference, width: 620, loading: loading}" />
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{reference.screenshotTablet}">
+                            <f:then>
+                                <div class="device-showcase device-showcase--solo device-showcase--solo-tablet">
+                                    <f:render partial="Reference/Device/Tablet" arguments="{reference: reference, width: 320, loading: loading}" />
+                                </div>
+                            </f:then>
+                            <f:else>
+                                <div class="device-showcase device-showcase--solo device-showcase--solo-phone">
+                                    <f:render partial="Reference/Device/Phone" arguments="{reference: reference, width: 200, loading: loading}" />
+                                </div>
+                            </f:else>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </f:else>
+        </f:if>
+    </f:else>
+</f:if>
+
+</html>

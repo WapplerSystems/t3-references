@@ -16,14 +16,13 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'name,slug,teaser,description,link,duration',
         'iconfile' => 'EXT:references/Resources/Public/Icons/tx_references_domain_model_reference.gif',
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
     ],
     'types' => [
-        '1' => ['showitem' => 'name, slug, teaser, description, link, technology, industry, target_group, task, country, duration, green_hosting, --div--;LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tab.media, logo, screenshot_smartphone, screenshot_tablet, screenshot_laptop, screenshot_desktop, video, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'name, slug, teaser, description, link, categories, country, duration, green_hosting, --div--;LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tab.media, logo, screenshot_smartphone, screenshot_tablet, screenshot_laptop, screenshot_desktop, video, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -69,6 +68,7 @@ return [
         'starttime' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
+            'searchable' => false,
             'config' => [
                 'type' => 'datetime',
                 'default' => 0,
@@ -80,6 +80,7 @@ return [
         'endtime' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
+            'searchable' => false,
             'config' => [
                 'type' => 'datetime',
                 'default' => 0,
@@ -92,8 +93,18 @@ return [
             ],
         ],
         'categories' => [
-            'config'=> [
+            'exclude' => false,
+            'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.categories',
+            'config' => [
                 'type' => 'category',
+                'relationship' => 'manyToMany',
+                'treeConfig' => [
+                    'startingPoints' => '1',
+                    'appearance' => [
+                        'showHeader' => true,
+                        'expandAll' => true,
+                    ],
+                ],
             ],
         ],
 
@@ -208,78 +219,6 @@ return [
                 'maxitems' => 1,
             ],
         ],
-        'technology' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.technology',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingleBox',
-                'foreign_table' => 'sys_tag',
-                'foreign_table_where' => 'AND sys_tag.pid = ###PAGE_TSCONFIG_ID###',
-                'MM' => 'sys_tag_record_mm',
-                'MM_opposite_field' => 'items',
-                'MM_match_fields' => [
-                    'tablenames' => 'tx_references_domain_model_reference',
-                    'fieldname' => 'technology',
-                ],
-                'minitems' => 0,
-                'multiple' => 1,
-            ],
-        ],
-        'industry' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.industry',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingleBox',
-                'foreign_table' => 'sys_tag',
-                'foreign_table_where' => 'AND sys_tag.pid = ###PAGE_TSCONFIG_ID###',
-                'MM' => 'sys_tag_record_mm',
-                'MM_opposite_field' => 'items',
-                'MM_match_fields' => [
-                    'tablenames' => 'tx_references_domain_model_reference',
-                    'fieldname' => 'industry',
-                ],
-                'minitems' => 0,
-                'multiple' => 1,
-            ],
-        ],
-        'target_group' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.target_group',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingleBox',
-                'foreign_table' => 'sys_tag',
-                'foreign_table_where' => 'AND sys_tag.pid = ###PAGE_TSCONFIG_ID###',
-                'MM' => 'sys_tag_record_mm',
-                'MM_opposite_field' => 'items',
-                'MM_match_fields' => [
-                    'tablenames' => 'tx_references_domain_model_reference',
-                    'fieldname' => 'target_group',
-                ],
-                'minitems' => 0,
-                'multiple' => 1,
-            ],
-        ],
-        'task' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.task',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingleBox',
-                'foreign_table' => 'sys_tag',
-                'foreign_table_where' => 'AND sys_tag.pid = ###PAGE_TSCONFIG_ID###',
-                'MM' => 'sys_tag_record_mm',
-                'MM_opposite_field' => 'items',
-                'MM_match_fields' => [
-                    'tablenames' => 'tx_references_domain_model_reference',
-                    'fieldname' => 'task',
-                ],
-                'minitems' => 0,
-                'multiple' => 1,
-            ],
-        ],
         'country' => [
             'exclude' => false,
             'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.country',
@@ -287,9 +226,10 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['label' => 'Default', 'value' => 0],
+                    ['label' => '', 'value' => 0],
                 ],
-                'size' => 30,
+                'default' => 0,
+                'size' => 1,
             ],
         ],
         'duration' => [
