@@ -1,0 +1,4 @@
+name: wapplersystems/references
+label: 'References'
+dependencies:
+  - typo3/fluid-styled-content
