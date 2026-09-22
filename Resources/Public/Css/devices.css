@@ -350,7 +350,7 @@
 .device-showcase {
     position: relative;
     width: 100%;
-    max-width: 480px;
+    max-width: 640px;
     aspect-ratio: 4 / 3;
     margin: 0 auto;
 }
@@ -363,7 +363,7 @@
 }
 
 .device-showcase--large {
-    max-width: 560px;
+    max-width: 610px;
 }
 
 .device-showcase--solo {
@@ -394,21 +394,34 @@
     max-width: 700px;
 }
 
-/* In der Grossansicht duerfen die Geraete groesser werden als in der Liste.
-   Ohne das war der Klick auf die Vorschau folgenlos: dieselbe Groesse, nur
-   mit Hintergrund. Die Bilder werden fuer die Grossansicht ohnehin schon in
-   entsprechender Groesse angefordert. */
-.device-showcase-lightbox-inline .device-showcase--solo-laptop,
+/* In der Grossansicht duerfen die Geraete groesser werden als in der Liste -
+   sonst ist der Klick auf die Vorschau folgenlos: dieselbe Groesse, nur mit
+   Hintergrund.
+
+   Die Obergrenzen sind aber keine freie Wahl: GLightbox gibt eingebettetem
+   Inhalt eine feste Buehne von 900x506 Pixeln, abzueglich des Innenabstands
+   bleiben rund 860x466. Was darueber hinausragt, bekommt Rollbalken. Die
+   Breiten unten sind so gewaehlt, dass die Gesamthoehe darunter bleibt -
+   einschliesslich dessen, was Fuss, Hals und Sockel unterhalb des
+   Bildschirms noch beanspruchen. */
 .device-showcase-lightbox-inline .device-showcase--solo-desktop {
-    max-width: 100%;
+    max-width: 720px;
+}
+
+/* Beim Laptop zaehlt nicht nur der Bildschirm: das Unterteil steht links und
+   rechts je 7 Prozent ueber, das Geraet braucht also 114 Prozent seiner
+   eigenen Breite. Auf schmalen Buehnen liefe es damit seitlich heraus - die
+   Prozentgrenze faengt das ab, bevor Rollbalken entstehen. */
+.device-showcase-lightbox-inline .device-showcase--solo-laptop {
+    max-width: min(720px, 86%);
 }
 
 .device-showcase-lightbox-inline .device-showcase--solo-tablet {
-    max-width: 420px;
+    max-width: 340px;
 }
 
 .device-showcase-lightbox-inline .device-showcase--solo-phone {
-    max-width: 260px;
+    max-width: 210px;
 }
 
 .device-showcase__screen {
@@ -549,12 +562,12 @@
 /* Tablet: iPad-style bezel + camera dot, like test.png */
 .device-showcase__tablet {
     bottom: 8%;
-    left: 4%;
-    width: 26%;
+    left: 2%;
+    width: 31%;
     aspect-ratio: 3 / 4;
     z-index: 3;
-    border-radius: 6% / 4.5%;
-    padding: 3%;
+    border-radius: 5% / 3.8%;
+    padding: 1.8%;
 }
 
 .device-showcase__tablet .device-showcase__inner {
@@ -565,7 +578,7 @@
 .device-showcase__tablet::before {
     content: "";
     position: absolute;
-    top: 1.4%;
+    top: 0.8%;
     left: 50%;
     transform: translateX(-50%);
     width: 2%;
@@ -578,55 +591,62 @@
 /* Smartphone: edge-to-edge screen with a notch cut into it, like test.png */
 .device-showcase__phone {
     bottom: 4%;
-    left: 22%;
-    width: 16%;
+    left: 24%;
+    width: 17%;
     aspect-ratio: 9 / 19;
     z-index: 4;
-    border-radius: 14% / 6%;
-    padding: 1% 0.8%;
+    border-radius: 17% / 7.5%;
+    padding: 1.4% 1.2%;
 }
 
 .device-showcase__phone .device-showcase__inner {
-    border-radius: 12% / 5%;
+    border-radius: 14% / 6.2%;
 }
 
 .device-showcase__phone-notch {
     position: absolute;
-    top: 1%;
+    top: 3%;
     left: 50%;
     transform: translateX(-50%);
-    width: 38%;
-    height: 2.6%;
-    background: #1c1c1e;
-    border-radius: 0 0 6px 6px;
+    width: 30%;
+    height: 1.9%;
+    background: #0a0a0c;
+    border-radius: 999px;
     z-index: 2;
 }
 
 .device-showcase__phone::before {
     content: "";
     position: absolute;
-    right: -3px;
+    right: -2px;
     top: 24%;
-    width: 3px;
-    height: 12%;
-    background: #1c1c1e;
+    width: 2px;
+    height: 13%;
+    background: #3a3a3e;
     border-radius: 0 2px 2px 0;
 }
 
 .device-showcase__phone::after {
     content: "";
     position: absolute;
-    left: -3px;
+    left: -2px;
     top: 16%;
-    width: 3px;
-    height: 18%;
-    background: #1c1c1e;
+    width: 2px;
+    height: 19%;
+    background: #3a3a3e;
     border-radius: 2px 0 0 2px;
 }
 
-/* Below ~576px the overlap gets too cramped — fall back to stacked cards */
+/* Below ~576px the overlap gets too cramped — fall back to stacked cards.
+   Ausgenommen ist die kombinierte Collage in der Grossansicht (--large):
+   GLightbox gibt ihr eine feste Buehne von 506 Pixeln Hoehe, die nicht
+   mitwaechst. Gestapelt kaemen dort ueber 1500 Pixel zusammen und damit
+   genau die Rollbalken, die hier vermieden werden sollen - ueberlagert
+   passt sie dagegen auch auf dem Telefon hinein. Die Einzelgeraete (--solo)
+   bleiben ebenfalls aussen vor: ein einzelnes Geraet laesst sich nicht
+   stapeln, es soll nur seine eigene Hoechstbreite behalten. */
 @media (max-width: 575.98px) {
-    .device-showcase {
+    .device-showcase:not(.device-showcase--large):not(.device-showcase--solo) {
         max-width: 100%;
         aspect-ratio: auto;
         display: flex;
@@ -634,13 +654,13 @@
         gap: 1.25rem;
     }
 
-    .device-showcase__screen {
+    .device-showcase:not(.device-showcase--large):not(.device-showcase--solo) .device-showcase__screen {
         position: static;
         width: 100% !important;
         aspect-ratio: 16 / 10;
     }
 
-    .device-showcase__phone {
+    .device-showcase:not(.device-showcase--large):not(.device-showcase--solo) .device-showcase__phone {
         aspect-ratio: 9 / 19;
         max-width: 220px;
         margin: 0 auto;
