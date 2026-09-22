@@ -70,6 +70,10 @@ class ReferenceController extends ActionController
             'selectedCountryLabel' => $this->findOptionLabel($countryFilterOptions, $country, 'cn_short_en'),
             'activeFilters' => $activeFilters,
             'showFilter' => $showFilter,
+            // Damit mehrere Listen auf einer Seite sich nicht gegenseitig
+            // nachladen, traegt jeder Ergebnisbereich die uid seines
+            // Inhaltselements.
+            'contentElementUid' => $this->request->getAttribute('currentContentObject')?->data['uid'] ?? 0,
         ]);
 
         return $this->htmlResponse();

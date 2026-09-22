@@ -139,6 +139,9 @@
 			<trans-unit id="reference_list.pagination.next" resname="reference_list.pagination.next">
 				<source>Next page</source>
 			</trans-unit>
+			<trans-unit id="reference_list.empty" resname="reference_list.empty">
+				<source>No reference matches this selection.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

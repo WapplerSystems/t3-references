@@ -8,78 +8,99 @@
 
     <f:flashMessages/>
 
+    <f:comment>
+        Die Filterleiste steht ausserhalb des nachgeladenen Bereichs: bei einer
+        Auswahl tauscht das Skript nur die Ergebnisse darunter aus, damit der
+        Fokus im gerade bedienten Auswahlfeld bleibt.
+    </f:comment>
     <f:if condition="{showFilter}">
-    <f:form action="list" method="get" class="reference__filter-bar">
-        <f:for each="{categoryGroups}" as="group">
-            <div class="reference-filter-field d-flex align-items-center gap-2">
-                <label for="category-select-{group.uid}" class="form-label mb-0 text-nowrap">{group.title}:</label>
-                <f:form.select id="category-select-{group.uid}" name="categories[{group.uid}]" class="form-select"
-                                options="{group.options}" optionValueField="uid" optionLabelField="title"
-                                value="{group.selectedUid}" prependOptionLabel="{f:translate(key: 'reference_list.filter.pleaseChoose')}" prependOptionValue="" />
+        <f:form action="list" method="get" class="reference__filter-bar" data="{reference-filter: 'form', reference-results: 'reference-results-{contentElementUid}'}">
+            <f:for each="{categoryGroups}" as="group">
+                <div class="reference-filter-field d-flex align-items-center gap-2">
+                    <label for="category-select-{group.uid}" class="form-label mb-0 text-nowrap">{group.title}:</label>
+                    <f:form.select id="category-select-{group.uid}" name="categories[{group.uid}]" class="form-select"
+                                    options="{group.options}" optionValueField="uid" optionLabelField="title"
+                                    value="{group.selectedUid}" prependOptionLabel="{f:translate(key: 'reference_list.filter.pleaseChoose')}" prependOptionValue="" />
+                </div>
+            </f:for>
+
+            <f:if condition="{countryFilterOptions}">
+                <div class="reference-filter-field d-flex align-items-center gap-2">
+                    <label for="country-select" class="form-label mb-0 text-nowrap"><f:translate key="reference_list.filter.country" /></label>
+                    <f:form.select id="country-select" name="country" class="form-select"
+                                    options="{countryFilterOptions}" optionValueField="uid" optionLabelField="cn_short_en"
+                                    value="{selectedCountry}" prependOptionLabel="{f:translate(key: 'reference_list.filter.pleaseChoose')}" prependOptionValue="" />
+                </div>
+            </f:if>
+
+            <f:comment>
+                Ohne JavaScript bleibt dieser Knopf der Weg zum Filtern. Mit
+                JavaScript blendet ihn das Skript aus, weil die Auswahl selbst
+                schon nachlaedt.
+            </f:comment>
+            <button type="submit" class="reference__filter-submit" data-reference-submit><f:translate key="reference_list.filter.submit" /></button>
+        </f:form>
+    </f:if>
+
+    <div class="reference__results" id="reference-results-{contentElementUid}">
+
+        <f:if condition="{activeFilters} || {selectedCountry}">
+            <div class="reference__active-filters">
+                <span class="reference__active-filters-label"><f:translate key="reference_list.filter.activeFilters" /></span>
+
+                <f:for each="{activeFilters}" as="filter">
+                    <a class="reference__filter-chip" href="{f:uri.action(action: 'list', arguments: filter.removeArguments)}">{filter.label}: {filter.valueLabel} <span aria-hidden="true">&times;</span></a>
+                </f:for>
+                <f:if condition="{selectedCountry}">
+                    <a class="reference__filter-chip" href="{f:uri.action(action: 'list', arguments: {categories: selectedCategories})}"><f:translate key="reference_list.filter.country" /> {selectedCountryLabel} <span aria-hidden="true">&times;</span></a>
+                </f:if>
+
+                <a class="reference__filter-chip reference__filter-chip--clear" href="{f:uri.action(action: 'list')}"><f:translate key="reference_list.filter.resetAll" /></a>
             </div>
+        </f:if>
+
+        <f:if condition="{paginator.paginatedItems -> f:count()} == 0">
+            <p class="reference__empty"><f:translate key="reference_list.empty" /></p>
+        </f:if>
+
+        <f:for each="{paginator.paginatedItems}" as="reference" iteration="referenceIteration">
+
+            <f:variable name="loading" value="lazy" />
+            <f:if condition="{referenceIteration.isFirst}">
+                <f:variable name="loading" value="eager" />
+            </f:if>
+
+            <f:render partial="Reference" arguments="{_all}"/>
+
         </f:for>
 
-        <f:if condition="{countryFilterOptions}">
-            <div class="reference-filter-field d-flex align-items-center gap-2">
-                <label for="country-select" class="form-label mb-0 text-nowrap"><f:translate key="reference_list.filter.country" /></label>
-                <f:form.select id="country-select" name="country" class="form-select"
-                                options="{countryFilterOptions}" optionValueField="uid" optionLabelField="cn_short_en"
-                                value="{selectedCountry}" prependOptionLabel="{f:translate(key: 'reference_list.filter.pleaseChoose')}" prependOptionValue="" />
-            </div>
-        </f:if>
-
-        <button type="submit" class="reference__filter-submit"><f:translate key="reference_list.filter.submit" /></button>
-    </f:form>
-
-    </f:if>
-
-    <f:if condition="{activeFilters} || {selectedCountry}">
-        <div class="reference__active-filters">
-            <span class="reference__active-filters-label"><f:translate key="reference_list.filter.activeFilters" /></span>
-
-            <f:for each="{activeFilters}" as="filter">
-                <a class="reference__filter-chip" href="{f:uri.action(action: 'list', arguments: filter.removeArguments)}">{filter.label}: {filter.valueLabel} <span aria-hidden="true">&times;</span></a>
-            </f:for>
-            <f:if condition="{selectedCountry}">
-                <a class="reference__filter-chip" href="{f:uri.action(action: 'list', arguments: {categories: selectedCategories})}"><f:translate key="reference_list.filter.country" /> {selectedCountryLabel} <span aria-hidden="true">&times;</span></a>
-            </f:if>
-
-            <a class="reference__filter-chip reference__filter-chip--clear" href="{f:uri.action(action: 'list')}"><f:translate key="reference_list.filter.resetAll" /></a>
-        </div>
-    </f:if>
-
-    <f:for each="{paginator.paginatedItems}" as="reference" iteration="referenceIteration">
-
-        <f:variable name="loading" value="lazy" />
-        <f:if condition="{referenceIteration.isFirst}">
-            <f:variable name="loading" value="eager" />
-        </f:if>
-
-        <f:render partial="Reference" arguments="{_all}"/>
-
-    </f:for>
-
-    <f:if condition="{showFilter} && {pagination.lastPageNumber} > 1">
-        <nav class="reference__pagination" aria-label="{f:translate(key: 'reference_list.pagination.label')}">
-            <f:if condition="{pagination.previousPageNumber}">
-                <a class="reference__pagination-link reference__pagination-link--prev" href="{f:uri.action(arguments: {categories: selectedCategories, country: selectedCountry, currentPage: pagination.previousPageNumber})}" aria-label="{f:translate(key: 'reference_list.pagination.previous')}">&lsaquo;</a>
-            </f:if>
-
-            <f:for each="{pagination.allPageNumbers}" as="pageNumber">
-                <f:if condition="{pageNumber} == {paginator.currentPageNumber}">
-                    <f:then>
-                        <span class="reference__pagination-link reference__pagination-link--current" aria-current="page">{pageNumber}</span>
-                    </f:then>
-                    <f:else>
-                        <a class="reference__pagination-link" href="{f:uri.action(arguments: {categories: selectedCategories, country: selectedCountry, currentPage: pageNumber})}">{pageNumber}</a>
-                    </f:else>
+        <f:if condition="{showFilter} && {pagination.lastPageNumber} > 1">
+            <nav class="reference__pagination" aria-label="{f:translate(key: 'reference_list.pagination.label')}">
+                <f:if condition="{pagination.previousPageNumber}">
+                    <a class="reference__pagination-link reference__pagination-link--prev" href="{f:uri.action(arguments: {categories: selectedCategories, country: selectedCountry, currentPage: pagination.previousPageNumber})}" aria-label="{f:translate(key: 'reference_list.pagination.previous')}">&lsaquo;</a>
                 </f:if>
-            </f:for>
 
-            <f:if condition="{pagination.nextPageNumber}">
-                <a class="reference__pagination-link reference__pagination-link--next" href="{f:uri.action(arguments: {categories: selectedCategories, country: selectedCountry, currentPage: pagination.nextPageNumber})}" aria-label="{f:translate(key: 'reference_list.pagination.next')}">&rsaquo;</a>
-            </f:if>
-        </nav>
+                <f:for each="{pagination.allPageNumbers}" as="pageNumber">
+                    <f:if condition="{pageNumber} == {paginator.currentPageNumber}">
+                        <f:then>
+                            <span class="reference__pagination-link reference__pagination-link--current" aria-current="page">{pageNumber}</span>
+                        </f:then>
+                        <f:else>
+                            <a class="reference__pagination-link" href="{f:uri.action(arguments: {categories: selectedCategories, country: selectedCountry, currentPage: pageNumber})}">{pageNumber}</a>
+                        </f:else>
+                    </f:if>
+                </f:for>
+
+                <f:if condition="{pagination.nextPageNumber}">
+                    <a class="reference__pagination-link reference__pagination-link--next" href="{f:uri.action(arguments: {categories: selectedCategories, country: selectedCountry, currentPage: pagination.nextPageNumber})}" aria-label="{f:translate(key: 'reference_list.pagination.next')}">&rsaquo;</a>
+                </f:if>
+            </nav>
+        </f:if>
+
+    </div>
+
+    <f:if condition="{showFilter}">
+        <f:asset.script identifier="references-filter" src="EXT:references/Resources/Public/JavaScript/filter.js"/>
     </f:if>
 
 </f:section>
