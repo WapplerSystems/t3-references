@@ -14,7 +14,7 @@
         Fokus im gerade bedienten Auswahlfeld bleibt.
     </f:comment>
     <f:if condition="{showFilter}">
-        <f:form action="list" method="get" class="reference__filter-bar" data="{reference-filter: 'form', reference-results: 'reference-results-{contentElementUid}'}">
+        <f:form action="list" method="get" class="reference__filter-bar" data="{reference-filter: 'form', reference-results: 'reference-results-{contentElementUid}', reference-ce: '{contentElementUid}', reference-type: '{settings.ajaxTypeNum}'}">
             <f:for each="{categoryGroups}" as="group">
                 <div class="reference-filter-field d-flex align-items-center gap-2">
                     <label for="category-select-{group.uid}" class="form-label mb-0 text-nowrap">{group.title}:</label>

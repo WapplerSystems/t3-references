@@ -1,4 +1,7 @@
 plugin.tx_references {
+  # cat=plugin.tx_references//b; type=int; label=Ausgabetyp fuer den Listenausschnitt (nur aendern, wenn die Nummer im Projekt schon vergeben ist)
+  ajaxTypeNum = 1732
+
   view {
     # cat=plugin.tx_references/file; type=string; label=Path to template root (FE)
     templateRootPath = EXT:references/Resources/Private/Templates/

@@ -3,6 +3,52 @@ page.includeCSS {
   referencesLogoSlider = EXT:references/Resources/Public/Css/logoSlider.css
 }
 
+# Ausgabetyp fuer die Filterleiste: liefert allein das angefragte
+# Listen-Inhaltselement, ohne Seitengeruest. Die Leiste holt sich damit ein
+# paar Kilobyte statt der ganzen Seite.
+#
+# Welches Element gerendert wird, sagt tx_references_ce. Die Auswahl ist
+# bewusst eng gefasst - nur ein references_list auf der angefragten Seite,
+# damit ueber diesen Weg nicht beliebige Inhalte abrufbar werden. Zugriffs-
+# und Sichtbarkeitsregeln bringt CONTENT von sich aus mit.
+referencesFragment = PAGE
+referencesFragment {
+  typeNum = {$plugin.tx_references.ajaxTypeNum}
+
+  config {
+    disableAllHeaderCode = 1
+    disablePrefixComment = 1
+    # tx_references_ce und die Filterargumente stehen ausserhalb der
+    # cHash-Berechnung, teilen sich also einen Zwischenspeicher-Schluessel.
+    # Ohne das hier bekaeme jede Anfrage die Antwort der ersten.
+    no_cache = 1
+    admPanel = 0
+    debug = 0
+    additionalHeaders.10.header = Content-Type: text/html; charset=utf-8
+    additionalHeaders.20.header = X-Robots-Tag: noindex
+  }
+
+  10 = CONTENT
+  10 {
+    table = tt_content
+    select {
+      pidInList.data = page:uid
+      # stdWrap muss hier ausgeschrieben werden - als uidInList.data allein
+      # greift es nicht, und dann liefert die Auswahl still alle Listen der
+      # Seite statt der angefragten. intval macht aus einer fehlenden Angabe
+      # eine 0, die nichts trifft.
+      uidInList.stdWrap.data = GP:tx_references_ce
+      uidInList.stdWrap.intval = 1
+      # Eine 0 laesst CONTENT als "keine Einschraenkung" durchgehen; -1 trifft
+      # dagegen nichts. Ohne Angabe soll nichts herauskommen, nicht alles.
+      uidInList.stdWrap.ifEmpty = -1
+      andWhere = {#CType} = 'references_list'
+      andWhere.insertData = 1
+      orderBy = sorting
+    }
+  }
+}
+
 plugin.tx_references {
   view {
     templateRootPaths.0 = EXT:references/Resources/Private/Templates/
@@ -30,5 +76,6 @@ plugin.tx_references {
 
   settings {
     listPageId = {$plugin.tx_references.settings.listPageId}
+    ajaxTypeNum = {$plugin.tx_references.ajaxTypeNum}
   }
 }
