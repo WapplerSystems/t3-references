@@ -4,6 +4,11 @@
     Wie beim Laptop: auf das Seitenverhaeltnis des Rahmens zuschneiden und in
     doppelter Groesse mitliefern. Ohne den Zuschnitt muss object-fit strecken,
     ohne die doppelte Fassung ist es auf einem feinen Bildschirm zu wenig.
+
+    Das `c-100` am Hoehenwert setzt den Zuschnitt an die Oberkante statt in die
+    Mitte. Eine Handy-Aufnahme ist schmaler als der Rahmen, mittig zugeschnitten
+    faellt oben ein Streifen weg - und genau dort steht das Logo. Unten geht
+    dafuer etwas mehr verloren, was auf einer Seite niemand vermisst.
 </f:comment>
 <f:if condition="{reference.screenshotSmartphone}">
     <f:variable name="hoehe1x" value="{width * 2.11111}" />
@@ -13,8 +18,8 @@
     <div class="device-showcase__screen device-showcase__phone">
         <div class="device-showcase__phone-notch"></div>
         <div class="device-showcase__inner">
-            <img src="{f:uri.image(image: reference.screenshotSmartphone, width: width, height: '{hoehe1x}c')}"
-                 srcset="{f:uri.image(image: reference.screenshotSmartphone, width: width, height: '{hoehe1x}c')} 1x, {f:uri.image(image: reference.screenshotSmartphone, width: breite2x, height: '{hoehe2x}c')} 2x"
+            <img src="{f:uri.image(image: reference.screenshotSmartphone, width: width, height: '{hoehe1x}c-100')}"
+                 srcset="{f:uri.image(image: reference.screenshotSmartphone, width: width, height: '{hoehe1x}c-100')} 1x, {f:uri.image(image: reference.screenshotSmartphone, width: breite2x, height: '{hoehe2x}c-100')} 2x"
                  width="{width}" height="{hoehe1x -> f:format.number(decimals: 0, thousandsSeparator: '')}"
                  alt="{reference.name}" loading="{loading}" decoding="async" />
         </div>
