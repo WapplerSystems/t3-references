@@ -87,6 +87,12 @@
 
     <div class="reference__content flex-grow-1">
 
+        <f:comment>
+            Das Logo steht ueber dem Namen: wer eine Referenzliste ueberfliegt,
+            erkennt die Marke schneller als er den Namen liest.
+        </f:comment>
+        <f:render partial="Reference/LogoBox" arguments="{reference: reference}" />
+
         <h2>{reference.name}</h2>
 
         <f:if condition="{reference.teaser}">
@@ -110,8 +116,6 @@
                 </f:if>
             </div>
         </f:if>
-
-        <f:render partial="Reference/LogoBox" arguments="{reference: reference}" />
 
         <div class="reference__footer">
             <f:if condition="{reference.link}">
