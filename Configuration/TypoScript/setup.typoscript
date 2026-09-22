@@ -1,4 +1,5 @@
 page.includeCSS {
+  referencesList = EXT:references/Resources/Public/Css/list.css
   referencesDeviceShowcase = EXT:references/Resources/Public/Css/devices.css
   referencesLogoSlider = EXT:references/Resources/Public/Css/logoSlider.css
 }
