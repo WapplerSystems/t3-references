@@ -8,6 +8,7 @@
 
     <f:flashMessages/>
 
+    <f:if condition="{showFilter}">
     <f:form action="list" method="get" class="reference__filter-bar">
         <f:for each="{categoryGroups}" as="group">
             <div class="reference-filter-field d-flex align-items-center gap-2">
@@ -29,6 +30,8 @@
 
         <button type="submit" class="reference__filter-submit"><f:translate key="reference_list.filter.submit" /></button>
     </f:form>
+
+    </f:if>
 
     <f:if condition="{activeFilters} || {selectedCountry}">
         <div class="reference__active-filters">
@@ -56,7 +59,7 @@
 
     </f:for>
 
-    <f:if condition="{pagination.lastPageNumber} > 1">
+    <f:if condition="{showFilter} && {pagination.lastPageNumber} > 1">
         <nav class="reference__pagination" aria-label="{f:translate(key: 'reference_list.pagination.label')}">
             <f:if condition="{pagination.previousPageNumber}">
                 <a class="reference__pagination-link reference__pagination-link--prev" href="{f:uri.action(arguments: {categories: selectedCategories, country: selectedCountry, currentPage: pagination.previousPageNumber})}" aria-label="{f:translate(key: 'reference_list.pagination.previous')}">&lsaquo;</a>

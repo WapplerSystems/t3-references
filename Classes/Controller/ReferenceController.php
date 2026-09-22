@@ -6,6 +6,7 @@ namespace wapplersystems\References\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use wapplersystems\References\Domain\Repository\ReferenceRepository;
@@ -24,12 +25,22 @@ class ReferenceController extends ActionController
     {
         $categories = $categories ?? [];
 
-        $references = $this->referenceRepository->findByFilters($categories, $country);
-        $paginator = new QueryResultPaginator($references, $currentPage, 10);
+        $presetCategories = $this->intList($this->settings['presetCategories'] ?? '');
+        $showFilter = (bool)($this->settings['showFilter'] ?? true);
+        $itemsPerPage = ((int)($this->settings['itemsPerPage'] ?? 0)) ?: 10;
+
+        // Ohne Filterleiste darf auch kein Argument aus der URL durchschlagen.
+        if (!$showFilter) {
+            $categories = [];
+            $country = null;
+        }
+
+        $references = $this->referenceRepository->findByFilters($categories, $country, $presetCategories);
+        $paginator = new QueryResultPaginator($references, $currentPage, $itemsPerPage);
         $pagination = new SimplePagination($paginator);
 
-        $categoryGroups = $this->referenceRepository->findCategoryGroups();
-        $countryFilterOptions = $this->referenceRepository->findUsedCountries();
+        $categoryGroups = $showFilter ? $this->referenceRepository->findCategoryGroups() : [];
+        $countryFilterOptions = $showFilter ? $this->referenceRepository->findUsedCountries() : [];
 
         $activeFilters = [];
         foreach ($categoryGroups as &$group) {
@@ -58,9 +69,20 @@ class ReferenceController extends ActionController
             'selectedCountry' => $country,
             'selectedCountryLabel' => $this->findOptionLabel($countryFilterOptions, $country, 'cn_short_en'),
             'activeFilters' => $activeFilters,
+            'showFilter' => $showFilter,
         ]);
 
         return $this->htmlResponse();
+    }
+
+    /**
+     * Turns a comma separated FlexForm value into a list of uids.
+     *
+     * @return int[]
+     */
+    private function intList(string $value): array
+    {
+        return array_values(array_filter(array_map('intval', GeneralUtility::trimExplode(',', $value, true))));
     }
 
     /**

@@ -17,11 +17,25 @@ class ReferenceRepository extends Repository
 
     /**
      * @param int[] $categoryUids One selected category uid per filter group (0/empty entries are ignored)
+     * @param int[] $presetCategoryUids Categories fixed in the plugin; they narrow the list before the visitor filters
      */
-    public function findByFilters(array $categoryUids, ?int $country): QueryResultInterface
+    public function findByFilters(array $categoryUids, ?int $country, array $presetCategoryUids = []): QueryResultInterface
     {
         $query = $this->createQuery();
         $constraints = [];
+
+        // Die festen Kategorien stecken den Rahmen ab, in dem der Besucher dann
+        // filtert. Untereinander wirken sie als ODER - "Institute und Schulen"
+        // soll die Liste weiten, nicht leeren.
+        $preset = [];
+        foreach ($presetCategoryUids as $categoryUid) {
+            if ($categoryUid) {
+                $preset[] = $query->contains('categories', (int)$categoryUid);
+            }
+        }
+        if ($preset !== []) {
+            $constraints[] = count($preset) === 1 ? $preset[0] : $query->logicalOr(...$preset);
+        }
 
         foreach ($categoryUids as $categoryUid) {
             if ($categoryUid) {

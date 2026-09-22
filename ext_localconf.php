@@ -11,8 +11,11 @@ ExtensionUtility::configurePlugin(
     [
         ReferenceController::class => 'list',
     ],
+    // Die Filterleiste schickt ihre Auswahl per GET. Bliebe list cachebar,
+    // lieferte TYPO3 auf jede Auswahl die zwischengespeicherte, ungefilterte
+    // Seite aus - der Filter sieht dann aus, als taete er nichts.
     [
-        ReferenceController::class => '',
+        ReferenceController::class => 'list',
     ],
     ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );

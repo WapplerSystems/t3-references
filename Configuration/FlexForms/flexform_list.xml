@@ -6,17 +6,52 @@
     <sheets>
         <sDEF>
             <ROOT>
-                <sheetTitle>Plugin Options</sheetTitle>
+                <sheetTitle>LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:flexform.list.sheet</sheetTitle>
                 <type>array</type>
                 <el>
-                    <settings.flexform_list.empty-field>
-                        <label>Empty field</label>
+                    <settings.presetCategories>
+                        <label>LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:flexform.list.presetCategories</label>
+                        <description>LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:flexform.list.presetCategories.description</description>
                         <config>
-                            <type>input</type>
-                            <size>50</size>
-                            <eval>trim</eval>
+                            <type>select</type>
+                            <renderType>selectTree</renderType>
+                            <foreign_table>sys_category</foreign_table>
+                            <foreign_table_where>AND sys_category.sys_language_uid IN (0,-1) ORDER BY sys_category.sorting</foreign_table_where>
+                            <size>12</size>
+                            <maxitems>20</maxitems>
+                            <treeConfig>
+                                <parentField>parent</parentField>
+                                <appearance>
+                                    <showHeader>1</showHeader>
+                                    <expandAll>1</expandAll>
+                                </appearance>
+                            </treeConfig>
                         </config>
-                    </settings.flexform_list.empty-field>
+                    </settings.presetCategories>
+
+                    <settings.showFilter>
+                        <label>LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:flexform.list.showFilter</label>
+                        <description>LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:flexform.list.showFilter.description</description>
+                        <config>
+                            <type>check</type>
+                            <renderType>checkboxToggle</renderType>
+                            <default>1</default>
+                        </config>
+                    </settings.showFilter>
+
+                    <settings.itemsPerPage>
+                        <label>LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:flexform.list.itemsPerPage</label>
+                        <description>LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:flexform.list.itemsPerPage.description</description>
+                        <config>
+                            <type>number</type>
+                            <size>5</size>
+                            <default>10</default>
+                            <range>
+                                <lower>1</lower>
+                                <upper>200</upper>
+                            </range>
+                        </config>
+                    </settings.itemsPerPage>
                 </el>
             </ROOT>
         </sDEF>

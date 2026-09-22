@@ -111,6 +111,27 @@
 			<trans-unit id="tab.media">
 				<source>Media</source>
 			</trans-unit>
+			<trans-unit id="flexform.list.sheet" resname="flexform.list.sheet">
+				<source>Plugin Options</source>
+			</trans-unit>
+			<trans-unit id="flexform.list.presetCategories" resname="flexform.list.presetCategories">
+				<source>Fixed categories</source>
+			</trans-unit>
+			<trans-unit id="flexform.list.presetCategories.description" resname="flexform.list.presetCategories.description">
+				<source>Narrows the list to these categories. Leave empty to show every reference.</source>
+			</trans-unit>
+			<trans-unit id="flexform.list.showFilter" resname="flexform.list.showFilter">
+				<source>Show filter bar</source>
+			</trans-unit>
+			<trans-unit id="flexform.list.showFilter.description" resname="flexform.list.showFilter.description">
+				<source>Off for a fixed excerpt on a topic page.</source>
+			</trans-unit>
+			<trans-unit id="flexform.list.itemsPerPage" resname="flexform.list.itemsPerPage">
+				<source>Entries per page</source>
+			</trans-unit>
+			<trans-unit id="flexform.list.itemsPerPage.description" resname="flexform.list.itemsPerPage.description">
+				<source>Beyond that the list is paginated.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
