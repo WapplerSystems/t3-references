@@ -57,11 +57,18 @@
             </f:if>
         </div>
 
-        <div id="device-lightbox-combined-{reference.uid}" class="device-showcase-lightbox-inline" style="display:none;">
-            <div class="device-showcase device-showcase--large">
-                <f:render partial="Reference/DeviceShowcaseScreens" arguments="{reference: reference, widthDesktop: 1100, widthLaptop: 800, widthTablet: 340, widthPhone: 200, loading: 'lazy'}" />
+        <f:comment>
+            Nur wenn es auch alle vier Abzuege gibt - sonst verweist nichts auf
+            diesen Block, er laesst aber trotzdem fuer jedes Geraet zwei
+            abgeleitete Bilder erzeugen, die nie jemand zu sehen bekommt.
+        </f:comment>
+        <f:if condition="{reference.screenshotDesktop} && {reference.screenshotLaptop} && {reference.screenshotTablet} && {reference.screenshotSmartphone}">
+            <div id="device-lightbox-combined-{reference.uid}" class="device-showcase-lightbox-inline" style="display:none;">
+                <div class="device-showcase device-showcase--large">
+                    <f:render partial="Reference/DeviceShowcaseScreens" arguments="{reference: reference, widthDesktop: 1100, widthLaptop: 800, widthTablet: 340, widthPhone: 200, loading: 'lazy'}" />
+                </div>
             </div>
-        </div>
+        </f:if>
 
         <f:if condition="{reference.screenshotSmartphone}">
             <div id="device-lightbox-phone-{reference.uid}" class="device-showcase-lightbox-inline" style="display:none;">
