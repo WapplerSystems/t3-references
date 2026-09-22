@@ -362,10 +362,6 @@
     margin: 0 auto;
 }
 
-.device-showcase--large {
-    max-width: 610px;
-}
-
 .device-showcase--solo {
     position: relative;
     width: 100%;
@@ -638,15 +634,11 @@
 }
 
 /* Below ~576px the overlap gets too cramped — fall back to stacked cards.
-   Ausgenommen ist die kombinierte Collage in der Grossansicht (--large):
-   GLightbox gibt ihr eine feste Buehne von 506 Pixeln Hoehe, die nicht
-   mitwaechst. Gestapelt kaemen dort ueber 1500 Pixel zusammen und damit
-   genau die Rollbalken, die hier vermieden werden sollen - ueberlagert
-   passt sie dagegen auch auf dem Telefon hinein. Die Einzelgeraete (--solo)
-   bleiben ebenfalls aussen vor: ein einzelnes Geraet laesst sich nicht
-   stapeln, es soll nur seine eigene Hoechstbreite behalten. */
+   Ausgenommen sind die Einzelgeraete der Grossansicht (--solo): dort steht
+   nur ein Geraet, es gibt nichts zu stapeln, und es soll seine eigene
+   Hoechstbreite behalten. */
 @media (max-width: 575.98px) {
-    .device-showcase:not(.device-showcase--large):not(.device-showcase--solo) {
+    .device-showcase:not(.device-showcase--solo) {
         max-width: 100%;
         aspect-ratio: auto;
         display: flex;
@@ -654,13 +646,13 @@
         gap: 1.25rem;
     }
 
-    .device-showcase:not(.device-showcase--large):not(.device-showcase--solo) .device-showcase__screen {
+    .device-showcase:not(.device-showcase--solo) .device-showcase__screen {
         position: static;
         width: 100% !important;
         aspect-ratio: 16 / 10;
     }
 
-    .device-showcase:not(.device-showcase--large):not(.device-showcase--solo) .device-showcase__phone {
+    .device-showcase:not(.device-showcase--solo) .device-showcase__phone {
         aspect-ratio: 9 / 19;
         max-width: 220px;
         margin: 0 auto;

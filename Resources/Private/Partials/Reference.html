@@ -7,29 +7,28 @@
         <f:variable name="galleryName" value="reference-{reference.uid}" />
 
         <div class="reference__image flex-shrink-0">
-            <f:if condition="{reference.screenshotDesktop} && {reference.screenshotLaptop} && {reference.screenshotTablet} && {reference.screenshotSmartphone}">
+            <f:comment>
+                Die Vorschau zeigt je nach Bestand die Collage oder ein einzelnes
+                Geraet - die Grossansicht beginnt aber immer beim groessten
+                vorhandenen Abzug. Die Collage noch einmal zu zeigen, waere ein
+                Klick ohne Gewinn: dasselbe Bild, nur mit Hintergrund.
+            </f:comment>
+            <f:if condition="{reference.screenshotDesktop}">
                 <f:then>
-                    <f:variable name="previewDevice" value="combined" />
+                    <f:variable name="previewDevice" value="desktop" />
                 </f:then>
                 <f:else>
-                    <f:if condition="{reference.screenshotDesktop}">
+                    <f:if condition="{reference.screenshotLaptop}">
                         <f:then>
-                            <f:variable name="previewDevice" value="desktop" />
+                            <f:variable name="previewDevice" value="laptop" />
                         </f:then>
                         <f:else>
-                            <f:if condition="{reference.screenshotLaptop}">
+                            <f:if condition="{reference.screenshotTablet}">
                                 <f:then>
-                                    <f:variable name="previewDevice" value="laptop" />
+                                    <f:variable name="previewDevice" value="tablet" />
                                 </f:then>
                                 <f:else>
-                                    <f:if condition="{reference.screenshotTablet}">
-                                        <f:then>
-                                            <f:variable name="previewDevice" value="tablet" />
-                                        </f:then>
-                                        <f:else>
-                                            <f:variable name="previewDevice" value="phone" />
-                                        </f:else>
-                                    </f:if>
+                                    <f:variable name="previewDevice" value="phone" />
                                 </f:else>
                             </f:if>
                         </f:else>
@@ -40,35 +39,21 @@
                 <f:render partial="Reference/DeviceShowcasePreview" arguments="{reference: reference, widthDesktop: 600, widthLaptop: 450, widthTablet: 250, widthPhone: 150, loading: loading}" />
             </a>
 
-            <!-- Hidden gallery members so, after the visible preview, next/prev cycles through the remaining devices:
-                 phone -> tablet -> laptop -> desktop. Whichever device is already the visible preview link above
-                 is skipped here, otherwise it would appear twice in the same GLightbox gallery group. -->
-            <f:if condition="{reference.screenshotSmartphone} && {previewDevice} != 'phone'">
-                <a href="#device-lightbox-phone-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
+            <!-- Versteckte Galeriemitglieder: nach dem sichtbaren Einstieg blaettert
+                 Weiter durch die uebrigen Geraete, vom groessten zum kleinsten.
+                 Das Geraet, das oben schon verlinkt ist, wird uebersprungen - sonst
+                 stuende es zweimal in derselben Galerie. Ein Desktop-Abzug ist
+                 immer der Einstieg, taucht hier also nie auf. -->
+            <f:if condition="{reference.screenshotLaptop} && {previewDevice} != 'laptop'">
+                <a href="#device-lightbox-laptop-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
             </f:if>
             <f:if condition="{reference.screenshotTablet} && {previewDevice} != 'tablet'">
                 <a href="#device-lightbox-tablet-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
             </f:if>
-            <f:if condition="{reference.screenshotLaptop} && {previewDevice} != 'laptop'">
-                <a href="#device-lightbox-laptop-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
-            </f:if>
-            <f:if condition="{reference.screenshotDesktop} && {previewDevice} != 'desktop'">
-                <a href="#device-lightbox-desktop-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
+            <f:if condition="{reference.screenshotSmartphone} && {previewDevice} != 'phone'">
+                <a href="#device-lightbox-phone-{reference.uid}" data-gallery="{galleryName}" class="lightbox visually-hidden" tabindex="-1" aria-hidden="true"></a>
             </f:if>
         </div>
-
-        <f:comment>
-            Nur wenn es auch alle vier Abzuege gibt - sonst verweist nichts auf
-            diesen Block, er laesst aber trotzdem fuer jedes Geraet zwei
-            abgeleitete Bilder erzeugen, die nie jemand zu sehen bekommt.
-        </f:comment>
-        <f:if condition="{reference.screenshotDesktop} && {reference.screenshotLaptop} && {reference.screenshotTablet} && {reference.screenshotSmartphone}">
-            <div id="device-lightbox-combined-{reference.uid}" class="device-showcase-lightbox-inline" style="display:none;">
-                <div class="device-showcase device-showcase--large">
-                    <f:render partial="Reference/DeviceShowcaseScreens" arguments="{reference: reference, widthDesktop: 1100, widthLaptop: 800, widthTablet: 340, widthPhone: 200, loading: 'lazy'}" />
-                </div>
-            </div>
-        </f:if>
 
         <f:if condition="{reference.screenshotSmartphone}">
             <div id="device-lightbox-phone-{reference.uid}" class="device-showcase-lightbox-inline" style="display:none;">
