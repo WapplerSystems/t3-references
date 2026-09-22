@@ -401,7 +401,7 @@
    einschliesslich dessen, was Fuss, Hals und Sockel unterhalb des
    Bildschirms noch beanspruchen. */
 .device-showcase-lightbox-inline .device-showcase--solo-desktop {
-    max-width: 720px;
+    max-width: 800px;
 }
 
 /* Beim Laptop zaehlt nicht nur der Bildschirm: das Unterteil steht links und
@@ -409,7 +409,7 @@
    eigenen Breite. Auf schmalen Buehnen liefe es damit seitlich heraus - die
    Prozentgrenze faengt das ab, bevor Rollbalken entstehen. */
 .device-showcase-lightbox-inline .device-showcase--solo-laptop {
-    max-width: min(720px, 86%);
+    max-width: min(740px, 86%);
 }
 
 .device-showcase-lightbox-inline .device-showcase--solo-tablet {
@@ -461,7 +461,11 @@
     top: 0;
     left: 0;
     width: 66%;
-    aspect-ratio: 16 / 10;
+    /* 16:9, nicht 16:10: die Abzuege sind Browserfenster auf einem
+       16:9-Bildschirm (1920x990, 2000x1000). In einem 16:10-Rahmen musste
+       davon ein Fuenftel der Breite weg, und mit dem Rand ging jedes Mal ein
+       Stueck der Seite verloren. */
+    aspect-ratio: 16 / 9;
     z-index: 1;
     border-radius: 1.8% / 2.4%;
     padding: 1.1%;
@@ -511,7 +515,8 @@
     top: 30%;
     right: 0;
     width: 48%;
-    aspect-ratio: 16 / 10;
+    /* 16:9 wie beim Monitor - aus demselben Grund. */
+    aspect-ratio: 16 / 9;
     z-index: 2;
     border-radius: 2.4% / 3%;
     /* Unten etwas mehr Rand als oben: das Kinn unter dem Bildschirm ist das,
@@ -649,7 +654,7 @@
     .device-showcase:not(.device-showcase--solo) .device-showcase__screen {
         position: static;
         width: 100% !important;
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 16 / 9;
     }
 
     .device-showcase:not(.device-showcase--solo) .device-showcase__phone {

@@ -1,32 +1,32 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <f:comment>
-    Der Abzug wird auf das Seitenverhaeltnis des Rahmens zugeschnitten (16:10,
-    daher 0.625) und zusaetzlich in doppelter Groesse geliefert. Beides ist
+    Der Abzug wird auf das Seitenverhaeltnis des Rahmens zugeschnitten (16:9,
+    daher 0.5625) und zusaetzlich in doppelter Groesse geliefert. Beides ist
     noetig:
 
     - Ohne den Zuschnitt muss object-fit das Bild strecken, um den Rahmen zu
-      fuellen. Bei 1920x992 auf 16:10 sind das 18 Prozent Vergroesserung, und
-      die sieht man.
+      fuellen, und die Streckung sieht man.
     - Ohne die doppelte Groesse ist es auf einem feinen Bildschirm noch einmal
       um den Faktor zwei zu klein.
 
     Die Ausgangsbilder sind 1920 Pixel breit, dafuer reicht das allemal.
 
-    Das `c-100` an beiden Werten setzt den Zuschnitt in die linke obere Ecke
-    statt in die Mitte. Mittig genommen faellt je nach Aufnahme links oder oben
-    ein Streifen weg - und genau dort steht auf jeder Seite das Logo. Was
-    stattdessen rechts und unten verloren geht, vermisst niemand.
+    Seitlich wird mittig zugeschnitten: die Aufnahmen sind Browserfenster, ihr
+    Inhalt steht in der Mitte, und ein einseitiger Zuschnitt schoebe das Bild
+    sichtbar aus dem Rahmen. In der Hoehe dagegen steht `c-100` und setzt den
+    Zuschnitt an die Oberkante - dort ist das Logo, unten faellt dafuer etwas
+    mehr weg.
 </f:comment>
 <f:if condition="{reference.screenshotLaptop}">
-    <f:variable name="hoehe1x" value="{width * 0.625}" />
+    <f:variable name="hoehe1x" value="{width * 0.5625}" />
     <f:variable name="breite2x" value="{width * 2}" />
-    <f:variable name="hoehe2x" value="{width * 1.25}" />
+    <f:variable name="hoehe2x" value="{width * 1.125}" />
 
     <div class="device-showcase__screen device-showcase__laptop">
         <div class="device-showcase__inner">
-            <img src="{f:uri.image(image: reference.screenshotLaptop, width: '{width}c-100', height: '{hoehe1x}c-100')}"
-                 srcset="{f:uri.image(image: reference.screenshotLaptop, width: '{width}c-100', height: '{hoehe1x}c-100')} 1x, {f:uri.image(image: reference.screenshotLaptop, width: '{breite2x}c-100', height: '{hoehe2x}c-100')} 2x"
+            <img src="{f:uri.image(image: reference.screenshotLaptop, width: width, height: '{hoehe1x}c-100')}"
+                 srcset="{f:uri.image(image: reference.screenshotLaptop, width: width, height: '{hoehe1x}c-100')} 1x, {f:uri.image(image: reference.screenshotLaptop, width: breite2x, height: '{hoehe2x}c-100')} 2x"
                  width="{width}" height="{hoehe1x -> f:format.number(decimals: 0, thousandsSeparator: '')}"
                  alt="{reference.name}" loading="{loading}" decoding="async" />
         </div>
