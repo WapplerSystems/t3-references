@@ -1,16 +1,16 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <f:comment>
-    Wie beim Laptop: auf das Seitenverhaeltnis des Rahmens zuschneiden und in
-    doppelter Groesse mitliefern. Ohne den Zuschnitt muss object-fit strecken,
+    Wie beim Laptop: auf das Seitenverhaeltnis der Bildflaeche zuschneiden und
+    in doppelter Groesse mitliefern. Ohne den Zuschnitt muss object-fit strecken,
     ohne die doppelte Fassung ist es auf einem feinen Bildschirm zu wenig.
     Seitlich mittig, in der Hoehe ab der Oberkante (`c-100`), damit das Logo
     ganz bleibt.
 </f:comment>
 <f:if condition="{reference.screenshotTablet}">
-    <f:variable name="hoehe1x" value="{width * 1.33333}" />
+    <f:variable name="hoehe1x" value="{width * 1.3771}" />
     <f:variable name="breite2x" value="{width * 2}" />
-    <f:variable name="hoehe2x" value="{width * 1.33333 * 2}" />
+    <f:variable name="hoehe2x" value="{width * 1.3771 * 2}" />
 
     <div class="device-showcase__screen device-showcase__tablet">
         <div class="device-showcase__inner">

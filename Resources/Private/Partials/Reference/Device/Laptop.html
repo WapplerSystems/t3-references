@@ -1,8 +1,8 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <f:comment>
-    Der Abzug wird auf das Seitenverhaeltnis des Rahmens zugeschnitten (16:9,
-    daher 0.5625) und zusaetzlich in doppelter Groesse geliefert. Beides ist
+    Der Abzug wird auf das Seitenverhaeltnis der Bildflaeche zugeschnitten
+    (0.5129) und zusaetzlich in doppelter Groesse geliefert. Beides ist
     noetig:
 
     - Ohne den Zuschnitt muss object-fit das Bild strecken, um den Rahmen zu
@@ -12,6 +12,15 @@
 
     Die Ausgangsbilder sind 1920 Pixel breit, dafuer reicht das allemal.
 
+    Die Zahl ist das Verhaeltnis der Bildflaeche, nicht das des Rahmens (16:9):
+    der Innenabstand ist unten groesser als oben, damit der Rahmen ein Kinn
+    bekommt, die Flaeche darin ist also flacher. Im Rahmenverhaeltnis geliefert,
+    schnitte object-fit die Differenz weg - oben den Streifen mit dem Logo.
+    Aendert sich das padding im CSS, gehoert diese Zahl nachgezogen. Sie gilt
+    fuer die Collage; in der Grossansicht steht das Geraet allein, dort beziehen
+    sich dieselben Prozentwerte auf einen anderen Container und der Rand faellt
+    etwas anders aus. Den Rest faengt `object-position: top` ab.
+
     Seitlich wird mittig zugeschnitten: die Aufnahmen sind Browserfenster, ihr
     Inhalt steht in der Mitte, und ein einseitiger Zuschnitt schoebe das Bild
     sichtbar aus dem Rahmen. In der Hoehe dagegen steht `c-100` und setzt den
@@ -19,9 +28,9 @@
     mehr weg.
 </f:comment>
 <f:if condition="{reference.screenshotLaptop}">
-    <f:variable name="hoehe1x" value="{width * 0.5625}" />
+    <f:variable name="hoehe1x" value="{width * 0.5129}" />
     <f:variable name="breite2x" value="{width * 2}" />
-    <f:variable name="hoehe2x" value="{width * 1.125}" />
+    <f:variable name="hoehe2x" value="{width * 0.5129 * 2}" />
 
     <div class="device-showcase__screen device-showcase__laptop">
         <div class="device-showcase__inner">
