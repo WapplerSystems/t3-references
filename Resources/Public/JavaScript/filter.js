@@ -32,6 +32,35 @@
     var SCHLUESSEL_KATEGORIEN = 'kategorien';
     var SCHLUESSEL_SEITE = 'seite';
 
+    var lichtkasten = null;
+
+    /**
+     * Die Geraetevorschauen oeffnen sich in GLightbox. Das Sitepaket bindet die
+     * Bibliothek einmal beim Laden an die damals vorhandenen Verweise - nach dem
+     * Austausch der Liste sind das nicht mehr dieselben. Ohne das hier springt
+     * ein Klick nur an den Anker, und der Anker wiederum raeumt den Filterstand
+     * aus dem Adresszusatz.
+     */
+    function lichtkastenNeuBinden() {
+        if (typeof GLightbox !== 'function') {
+            return;
+        }
+        var einstellungen = {};
+        var block = document.getElementById('t3b-lightbox-config');
+        if (block) {
+            try {
+                einstellungen = JSON.parse(block.textContent || '{}');
+            } catch (e) {
+                // Kaputte Einstellungen sind kein Grund, die Vorschau ganz
+                // aufzugeben - dann eben mit den Vorgaben.
+            }
+        }
+        if (lichtkasten && typeof lichtkasten.destroy === 'function') {
+            lichtkasten.destroy();
+        }
+        lichtkasten = GLightbox(einstellungen);
+    }
+
     function einrichten(formular) {
         if (formular.dataset.referenceFilterBereit) {
             return;
@@ -174,6 +203,7 @@
                         throw new Error('Ergebnisbereich nicht in der Antwort');
                     }
                     ergebnisse.innerHTML = neu.innerHTML;
+                    lichtkastenNeuBinden();
                 })
                 .catch(function (fehler) {
                     if (fehler.name === 'AbortError') {
@@ -249,7 +279,16 @@
         });
 
         window.addEventListener('hashchange', function () {
-            var stand = standAusHash() || { kategorien: [], seite: 1 };
+            var stand = standAusHash();
+            if (!stand) {
+                // Ein Adresszusatz, der keiner von uns ist - etwa der Anker
+                // einer Geraetevorschau. Nur ein leerer bedeutet "Filter weg";
+                // ein fremder darf die Liste nicht anruehren.
+                if (window.location.hash !== '') {
+                    return;
+                }
+                stand = { kategorien: [], seite: 1 };
+            }
             feldernZuweisen(stand);
             laden(stand);
         });
