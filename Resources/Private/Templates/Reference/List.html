@@ -3,6 +3,16 @@
 
 <f:section name="content">
 
+    <f:comment>
+        T3Bootstrap laedt die Bootstrap-Bausteine erst auf Anforderung. Die
+        Filterleiste benutzt `.form-select`, auf einer Referenzseite steht aber
+        sonst kein Formular - ohne diese Zeile kommen die Regeln nie an, und
+        die Auswahlfelder erscheinen als nackte Browserfelder: eckig, ohne
+        Pfeil, 27 statt 38 Pixel hoch. Faellt lokal nicht auf, wenn das
+        Sitepaket die Formularregeln schon in der Grundausstattung mitbringt.
+    </f:comment>
+    <wsscss:asset.scss identifier="forms" href="EXT:template/Resources/Public/SCSS/components/forms.scss"/>
+
     <wsscss:asset.scss identifier="glightbox" href="EXT:template/Resources/Public/SCSS/components/glightbox.scss"/>
     <f:asset.script identifier="glightbox" src="EXT:template/Resources/Public/JavaScript/glightbox/glightbox.min.js"/>
 
