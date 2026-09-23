@@ -7,6 +7,7 @@ namespace wapplersystems\References\Domain\Repository;
 use Doctrine\DBAL\ParameterType;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
+use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
@@ -81,7 +82,15 @@ class ReferenceRepository extends Repository
 
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('sys_category');
 
-        $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+        // Versteckte Kategorien werden nicht als Filter angeboten. Damit laesst
+        // sich eine ganze Achse im Backend abschalten, ohne die Zuordnungen zu
+        // verlieren: die Partner-Achse etwa ordnet jede Referenz ihrer Agentur
+        // zu - das ist intern nuetzlich, geht aber Besucher nichts an. Ein
+        // Haken an der Kategorie "Partner" nimmt die Auswahlliste heraus und
+        // laesst die Zuordnungen stehen.
+        $queryBuilder->getRestrictions()->removeAll()
+            ->add(GeneralUtility::makeInstance(DeletedRestriction::class))
+            ->add(GeneralUtility::makeInstance(HiddenRestriction::class));
 
         $rows = $queryBuilder
             ->select('grp.uid AS group_uid', 'grp.title AS group_title', 'child.uid AS uid', 'child.title AS title')
