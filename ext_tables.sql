@@ -17,7 +17,8 @@ CREATE TABLE tx_references_domain_model_reference
 	target_group          int(11)                       DEFAULT '0' NOT NULL,
 	country               varchar(255)                  DEFAULT '' NOT NULL,
 	duration              varchar(255)         NOT NULL DEFAULT '',
-	green_hosting         smallint(1) unsigned NOT NULL DEFAULT '0'
+	green_hosting         smallint(1) unsigned NOT NULL DEFAULT '0',
+	priority              int(11)              NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE tx_references_domain_model_reference

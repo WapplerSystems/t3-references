@@ -54,6 +54,12 @@ class Reference extends AbstractEntity
 
     protected bool $greenHosting = false;
 
+    /**
+     * Hoehere Werte stehen in der Liste weiter vorn. 0 heisst: keine
+     * Priorisierung, dann entscheidet der Name.
+     */
+    protected int $priority = 0;
+
     public function __construct()
     {
         $this->categories = new ObjectStorage();
@@ -192,6 +198,16 @@ class Reference extends AbstractEntity
     public function getGreenHosting(): bool
     {
         return $this->greenHosting;
+    }
+
+    public function getPriority(): int
+    {
+        return $this->priority;
+    }
+
+    public function setPriority(int $priority): void
+    {
+        $this->priority = $priority;
     }
 
     public function setGreenHosting(bool $greenHosting): void

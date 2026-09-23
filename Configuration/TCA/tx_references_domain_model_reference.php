@@ -1,6 +1,7 @@
 <?php
 return [
     'ctrl' => [
+        'default_sortby' => 'priority DESC, name ASC',
         'title' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference',
         'label' => 'name',
         'tstamp' => 'tstamp',
@@ -22,7 +23,7 @@ return [
         ],
     ],
     'types' => [
-        '1' => ['showitem' => 'name, slug, teaser, description, link, categories, country, duration, green_hosting, --div--;LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tab.media, logo, screenshot_smartphone, screenshot_tablet, screenshot_laptop, screenshot_desktop, video, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'name, priority, slug, teaser, description, link, categories, country, duration, green_hosting, --div--;LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tab.media, logo, screenshot_smartphone, screenshot_tablet, screenshot_laptop, screenshot_desktop, video, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -240,6 +241,18 @@ return [
                 'size' => 30,
                 'eval' => 'trim',
                 'default' => ''
+            ],
+        ],
+        'priority' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.priority',
+            'description' => 'LLL:EXT:references/Resources/Private/Language/locallang_db.xlf:tx_references_domain_model_reference.priority.description',
+            'config' => [
+                'type' => 'number',
+                'format' => 'integer',
+                'size' => 6,
+                'default' => 0,
+                'range' => ['lower' => 0, 'upper' => 999],
             ],
         ],
         'green_hosting' => [

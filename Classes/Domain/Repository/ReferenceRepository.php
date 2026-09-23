@@ -9,6 +9,7 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -50,6 +51,8 @@ class ReferenceRepository extends Repository
             $query->matching($query->logicalAnd(...$constraints));
         }
 
+        $this->sortieren($query);
+
         return $query->execute();
     }
 
@@ -77,6 +80,7 @@ class ReferenceRepository extends Repository
         $rootUid = (int)explode(',', $startingPoints)[0];
 
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('sys_category');
+
         $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
 
         $rows = $queryBuilder
@@ -144,4 +148,19 @@ class ReferenceRepository extends Repository
             ->fetchAllAssociative();
     }
 
+    /**
+     * Ohne setOrderings hat die Abfrage kein ORDER BY - dann entscheidet die
+     * Datenbank, und die Reihenfolge kann sich zwischen zwei Aufrufen aendern.
+     * Deshalb wird sie hier ausdruecklich festgelegt:
+     *
+     *   priority absteigend - was hervorgehoben werden soll, steht vorn
+     *   name aufsteigend    - alles Uebrige alphabetisch, also vorhersehbar
+     */
+    protected function sortieren(QueryInterface $query): void
+    {
+        $query->setOrderings([
+            'priority' => QueryInterface::ORDER_DESCENDING,
+            'name' => QueryInterface::ORDER_ASCENDING,
+        ]);
+    }
 }

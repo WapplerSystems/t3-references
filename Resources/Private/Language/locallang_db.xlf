@@ -84,6 +84,12 @@
 			<trans-unit id="tx_references_domain_model_reference.duration.description" resname="tx_references_domain_model_reference.duration.description">
 				<source>Duration</source>
 			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.priority" resname="tx_references_domain_model_reference.priority">
+				<source>Priority</source>
+			</trans-unit>
+			<trans-unit id="tx_references_domain_model_reference.priority.description" resname="tx_references_domain_model_reference.priority.description">
+				<source>Higher values are shown first. 0 means no priority.</source>
+			</trans-unit>
 			<trans-unit id="tx_references_domain_model_reference.green_hosting" resname="tx_references_domain_model_reference.green_hosting">
 				<source>Green Hosting</source>
 			</trans-unit>
