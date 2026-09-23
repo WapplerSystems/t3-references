@@ -44,6 +44,57 @@
     min-width: 0;
 }
 
+/* Auf dem Telefon steht jedes Feld allein in seiner Zeile - und dann faellt
+   auf, dass die vier Beschriftungen verschieden lang sind: "Branche:" misst
+   56 Pixel, "Technologie:" 80. Nebeneinander gesetzt beginnt jedes
+   Auswahlfeld an einer anderen Stelle, und das Auge findet keine Linie.
+   Deshalb hier die Beschriftung ueber das Feld, beide buendig links und ueber
+   die volle Breite. Ab 576 Pixeln stehen zwei Felder nebeneinander, dort
+   traegt die Zeilenform wieder. */
+@media (max-width: 575.98px) {
+    .reference__filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.9rem;
+        padding: 1rem 1.1rem;
+    }
+
+    /* Beide flex-Kurzformen muessen hier zurueckgenommen werden. Sie sind fuer
+       die Zeilenform gedacht und meinen dort Breiten; sobald Leiste und Feld
+       auf Spalte stehen, meinen dieselben Werte Hoehen: aus `flex: 1 1 15rem`
+       am Feld wurde eine Hoehe von 240 Pixeln, aus `flex: 1 1 auto` am
+       Auswahlfeld die restliche Hoehe darin. Die Leiste stand dadurch bei
+       1052 Pixeln. */
+    /* `align-items: stretch` braucht hier `!important`, weil das Markup die
+       Bootstrap-Hilfsklasse `align-items-center` traegt und die Utilities-API
+       ihre Regeln grundsaetzlich mit `!important` ausliefert - Spezifitaet
+       allein reicht dagegen nicht. Aus demselben Grund steht weiter oben schon
+       `flex-direction: row !important`.
+       Mit `center` bliebe die Beschriftung auf ihrer Textbreite stehen und
+       wuerde mittig gesetzt; gebraucht wird die volle Breite, damit sie links
+       an derselben Kante beginnt wie das Auswahlfeld. */
+    .reference-filter-field {
+        flex: 0 0 auto;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.3rem;
+    }
+
+    .reference-filter-field .form-select {
+        flex: 0 0 auto;
+    }
+
+    .reference-filter-field label {
+        /* Die Beschriftung traegt hier keine eigene Spalte mehr, sie steht
+           als Zeile darueber - also linksbuendig und ohne Ausrichtung auf
+           eine gedachte Kante. */
+        text-align: left;
+        white-space: normal;
+        font-weight: 600;
+        color: #4a4a4f;
+    }
+}
+
 /* Active filter chips: which filters are currently applied, each one a
    link that removes just that filter (keeping the others). */
 .reference__active-filters {
@@ -235,6 +286,14 @@
 
 .reference__details {
     display: inline-block;
+
+    /* Immer eine eigene Zeile. Geschlossen ist das <details> nur so breit wie
+       "Mehr erfahren" und stellt sich damit neben "Projekt besuchen"; beim
+       Oeffnen braucht es die volle Breite und rutscht in die naechste Zeile.
+       Gemessen waren das 51 Pixel - Knopfhoehe plus Abstand. Man klickt, und
+       der Text wandert unter dem Zeiger weg. Mit voller Zeilenbreite bleibt
+       die Zusammenfassung stehen, und nur der Inhalt darunter waechst. */
+    flex: 0 0 100%;
 }
 
 .reference__details summary {
@@ -659,10 +718,28 @@
         gap: 1.25rem;
     }
 
+    /* relative, nicht static: die Standfuesse, Kerben und Kamerapunkte sind
+       absolut positionierte Pseudoelemente. Bei static ist der Rahmen kein
+       umschliessender Block mehr, sie rutschen an einen weit entfernten
+       Vorfahren - sichtbar als schwarzer Balken quer ueber dem Bildschirm. */
     .device-showcase:not(.device-showcase--solo) .device-showcase__screen {
-        position: static;
+        position: relative;
+        /* Die Versatzwerte stammen aus der Collage, wo die Rahmen absolut
+           liegen. Bei relative verschieben sie den Rahmen, statt ihn zu
+           platzieren - Tablet und Telefon rutschten nach rechts aus dem
+           Kasten. Im Stapel wird gar nicht versetzt. */
+        inset: auto;
         width: 100% !important;
         aspect-ratio: 16 / 9;
+    }
+
+    /* Der Laptopfuss steht links und rechts 7 % ueber den Rahmen hinaus. In der
+       Collage faellt das nicht auf, weil der Laptop dort nur 48 % breit ist -
+       gestapelt nimmt er die volle Breite und der Fuss ragt aus dem Kasten.
+       86 % lassen ihm genau den Platz, den er braucht. */
+    .device-showcase:not(.device-showcase--solo) .device-showcase__laptop {
+        max-width: 86%;
+        margin: 0 auto;
     }
 
     .device-showcase:not(.device-showcase--solo) .device-showcase__phone {
